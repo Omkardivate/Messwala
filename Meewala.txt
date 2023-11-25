@@ -1,0 +1,42 @@
+-- create
+CREATE TABLE user (
+ userid int not null auto_increment primary key,
+ Firstname varchar(20) not null,
+ Lastname varchar(20)not null,
+ Mobileno bigint not null unique,
+ EmailId varchar(30) not null unique,
+ Password varchar(20) not null 
+);
+
+CREATE TABLE mess (
+  messid  int not null auto_increment primary key,
+  messname  varchar(20) not null,
+  messtime  varchar(20) not null ,
+  
+  messownerFirstname  varchar(20) not null,
+  messownerLastname  varchar(20) not null,
+  messownermobile  varchar(20) not null,
+  Rating int not null  --triggered on Rating to update it
+  --messplan table lets make one more table containg type of membership and respective rate
+  --address table as we want to search mess based on street split address to get street
+  --messmenu table banvu apan dish rate
+  
+);
+
+CREATE TABLE Rating
+(
+   userid int not null,  --foreign key from user
+   messid int not null,  --foreign key from mess
+   rating int not null 
+   primary key(userid,messid);  --composite primary key
+);
+
+CREATE TABLE Address
+(
+   messid int not null,--foreign key(messid from mess)
+   Streetname varchar(40), --sb road,jm road
+   Area varchar(40) not null,  --baner,wakad,shivaji nagar
+   State varchar(40) not null,
+   city varchar(40) not null
+   
+);
