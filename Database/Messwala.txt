@@ -1,0 +1,11 @@
+-- create
+CREATE TABLE user (
+ userid int auto_increment primary key,
+ username varchar(20) not null unique,
+ name varchar(30)not null,
+ mobileno bigint not null unique,
+ emailId varchar(30) not null unique,
+ password varchar(20) not null 
+);
+
+
