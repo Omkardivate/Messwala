@@ -1,85 +1,74 @@
-DROP DATABASE IF EXISTS messwala1;
-CREATE DATABASE messwala1; 
-USE messwala1;
+DROP DATABASE IF EXISTS Messwala;
+CREATE DATABASE Messwala; 
+USE Messwala;
 
-DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS mess;
-DROP TABLE IF EXISTS dailymenu;
-DROP TABLE IF EXISTS todaysmenu;
-DROP TABLE IF EXISTS messplanned;
-DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Mess;
+DROP TABLE IF EXISTS Daily_menu;
+DROP TABLE IF EXISTS Todays_menu;
+DROP TABLE IF EXISTS Messplanned;
+DROP TABLE IF EXISTS Reviews;
 
 
-CREATE TABLE user (
- userid int auto_increment primary key,
- username varchar(30) not null unique,
- password varchar(30) not null ,
- name varchar(50)not null,
- mobile bigint not null unique,
- emailid varchar(50) not null unique
+CREATE TABLE User (
+  userid INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(30) NOT NULL UNIQUE,
+  password VARCHAR(30) NOT NULL,
+  fname VARCHAR(50) NOT NULL,
+  mname VARCHAR(50) NOT NULL,
+  lname VARCHAR(50) NOT NULL UNIQUE,
+  mobile BIGINT NOT NULL UNIQUE,
+  emailid VARCHAR(50) NOT NULL UNIQUE
 );
 
-
-CREATE TABLE mess (
-  messid  int auto_increment primary key,
-  messname  varchar(30) not null,
-  ownername  varchar(30) not null,
-  password varchar(30) not null ,
-  mobile bigint not null unique,
-  rating float not null default 0,
-  messtime  varchar(30) not null ,
-  state varchar(30) not null, 
-  city varchar(30) not null, 
-  landmark varchar(30) not null
+CREATE TABLE Mess (
+  messid INT AUTO_INCREMENT PRIMARY KEY,
+  messname  VARCHAR(30) NOT NULL,
+  ownername  VARCHAR(30) NOT NULL,
+  password VARCHAR(30) NOT NULL,
+  mobile BIGINT NOT NULL UNIQUE,
+  rating FLOAT NOT NULL DEFAULT 0,
+  messtime  VARCHAR(30) NOT NULL,
+  state VARCHAR(30) NOT NULL, 
+  city VARCHAR(30) NOT NULL, 
+  landmark VARCHAR(30) NOT NULL
 );
 
-
-CREATE TABLE dailymenu
-( 
-   messid int ,  
-   menu varchar(50) not null ,
-   price float not null,
-
-   foreign key(messid) references mess(messid) ON DELETE CASCADE
+CREATE TABLE Daily_menu ( 
+   messid INT,  
+   menu VARCHAR(70) NOT NULL,
+   price FLOAT NOT NULL,
+   FOREIGN KEY(messid) REFERENCES Mess(messid) ON DELETE CASCADE
 );
 
-
-CREATE TABLE todaysmenu
-( 
-   messid int primary key,  
-   menu varchar(500) not null ,
-   price float not null,
-   avaibility bool,
-
-   foreign key(messid) references mess(messid) ON DELETE CASCADE
+CREATE TABLE Todays_menu ( 
+   messid INT NOT NULL UNIQUE,  
+   menu VARCHAR(500) NOT NULL,
+   price FLOAT NOT NULL,
+   avaibility BOOL,
+   FOREIGN KEY(messid) REFERENCES Mess(messid) ON DELETE CASCADE
 );
 
-
-CREATE TABLE messplanned
-( 
-   messid int,  
-   duration int not null ,
-   messplan varchar(150) not null,
-   charges float not null,
-   
-   foreign key(messid) references mess(messid) ON DELETE CASCADE
+CREATE TABLE Messplanned ( 
+   messid INT,  
+   duration INT NOT NULL,
+   messplan VARCHAR(150) NOT NULL,
+   charges FLOAT NOT NULL,
+   FOREIGN KEY(messid) REFERENCES Mess(messid) ON DELETE CASCADE
 );
 
-
-CREATE TABLE reviews   
+CREATE TABLE Reviews   
 (
-   reviewid int auto_increment unique,
-   userid int not null,  
-   messid int not null,  
-   rating int not null ,
-   review varchar(150),
-   check(rating<=5 and rating>0),
-
-   foreign key(userid) references user(userid) ON DELETE CASCADE,
-   foreign key(messid) references mess(messid) ON DELETE CASCADE,
-   primary key(userid,messid)  
+   reviewid INT AUTO_INCREMENT UNIQUE,
+   userid INT NOT NULL,  
+   messid INT NOT NULL,  
+   rating INT NOT NULL,
+   review VARCHAR(150),
+   CHECK(rating<=5 AND rating>0),
+   FOREIGN KEY(userid) REFERENCES User(userid) ON DELETE CASCADE,
+   FOREIGN KEY(messid) REFERENCES Mess(messid) ON DELETE CASCADE,
+   PRIMARY KEY(userid,messid)  
 );
-
 
 
 DROP TRIGGER IF EXISTS avgreview;
