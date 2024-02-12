@@ -1,58 +1,67 @@
 package com.demo.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name="reviews")
-public class Reviews {
+@IdClass(Reviews.class)
+public class Reviews implements Serializable {
+
+	static int cnt=0;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long reviewid;
-	
-	private Integer rating;
-	private String review;
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="userid")
-	private User user;
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="messid")
-	private Mess mess;
+    @Column(unique = true, nullable = false)
+    private int reviewid;
+
+    @Id
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="userid")
+    private User user;
+
+    @Id
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="messid")
+    private Mess mess;
+
+    @Column(columnDefinition = "integer default 0")
+    private int rating;
+    
+    private String review;
+
 
 	public Reviews() {
 		super();
 	}
 
-	public Reviews(Integer rating, String review, User user, Mess mess) {
+	public Reviews(int rating, String review, User user, Mess mess) {
 		super();
+		cnt++;
+		this.reviewid= cnt;
 		this.rating = rating;
 		this.review = review;
 		this.user = user;
 		this.mess = mess;
 	}
 
-	public Long getReviewid() {
+	public int getReviewid() {
 		return reviewid;
 	}
 
-	public void setReviewid(Long reviewid) {
+	public void setReviewid(int reviewid) {
 		this.reviewid = reviewid;
 	}
 
-	public Integer getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 

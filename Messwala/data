@@ -1,0 +1,74 @@
+User:-  http://localhost:8080/user/adduser
+{
+        "username":"om",
+        "password":"om29",
+        "name": "omkar divate",
+        "mobile":808772,
+        "emai": "om@gmail.com"
+}
+
+Mess :-  http://localhost:8080/mess/addmess
+{
+    "ownername": "Jitesh patil",
+    "messname": "Sukhswad",
+    "username": "patil_sukhswad",
+    "password": "jitesh123",
+    "mobile": 808772,
+    "messtime": "Mon-Sat, 7am-9pm",
+    "state": "MH",
+    "city": "pune",
+    "landmark" : "Model colony"
+}
+
+Review :- not working   http://localhost:8080/reviews/addreview
+{
+    "rating": 5,
+    "review": "very good mess",
+    "user": {
+        "userid": 1,
+        "username": "om",
+        "password": "om29",
+        "name": "omkar divate",
+        "mobile": 808772,
+        "email": "om@gmail.com"
+    },
+    "mess": {
+        "messid": 1,
+        "ownername": "Jitesh patil",
+        "messname": "Sukhswad",
+        "username": "patil_sukhswad",
+        "password": "jitesh123",
+        "mobile": 808772,
+        "rating": 0,
+        "messtime": "Mon-Sat, 7am-9pm",
+        "state": "MH",
+        "city": "pune",
+        "landmark": "Model colony"
+    }
+}
+
+
+Reviews :-  http://localhost:8080/reviews/addreview
+{
+    "rating": 4,
+    "review": "very good mess",
+    "user": {
+        "username":"om",
+        "password":"om29",
+        "name": "omkar divate",
+        "mobile":808772,
+        "emai": "om@gmail.com"
+    },
+    "mess": {
+        "ownername": "Jitesh patil",
+        "messname": "Sukhswad",
+        "username": "patil_sukhswad",
+        "password": "jitesh123",
+        "mobile": 808772,
+        "rating": 0,
+        "messtime": "Mon-Sat, 7am-9pm",
+        "state": "MH",
+        "city": "pune",
+        "landmark": "Model colony"
+    }
+}
