@@ -56,4 +56,16 @@ public class UserServiceImpl implements UserService{
 			dao.deleteById(id);
 		}
 	}
+	
+	@Override
+	public List<User> findAllUsers(){
+		List<User> ulist= dao.findAllUser();
+		return ulist;
+	}
+	
+	@Override
+	public User findUser(int id){
+		User user= dao.findUser(id);
+		return user;
+	}
 }

@@ -7,5 +7,5 @@ import com.demo.model.Reviews;
 public interface ReviewsService {
 	void addReview(Reviews r);
 
-	List<Reviews> getAllReviews();
+	List<Reviews> findAllReviewsById(int id);
 }

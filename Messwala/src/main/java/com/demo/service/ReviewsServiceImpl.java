@@ -13,17 +13,19 @@ public class ReviewsServiceImpl implements ReviewsService{
 
 	@Autowired
 	private ReviewsDao dao;
+	private static int cnt=0;
 	
 	@Override
-	public void addReview(Reviews r) {   //not checked yet
-		dao.save(r);
+	public void addReview(Reviews r) {   //not adding record in db
+		r.setReviewid(++cnt);
+		System.out.println("review addeing--> "+ r);
+		dao.saveReview(r.getReviewid(),r.getRating(),r.getReview(),r.getMess(),r.getUser());
+		//dao.save(r);  //error countering here
 		System.out.println("review added successfully...");
-	}
-
-	@Override
-	public List<Reviews> getAllReviews() {    //not checked yet
-		List<Reviews> rlist= dao.findAll();
+	} 	
+	
+	public List<Reviews> findAllReviewsById(int messid){
+		List<Reviews> rlist= dao.findAllReviewsById(messid);
 		return rlist;
 	}
-
 }

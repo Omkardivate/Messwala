@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 @IdClass(Reviews.class)
 public class Reviews implements Serializable {
 
-	static int cnt=0;
+	private static final long serialVersionUID = 1L;
 	
     @Column(unique = true, nullable = false)
     private int reviewid;
@@ -41,8 +41,6 @@ public class Reviews implements Serializable {
 
 	public Reviews(int rating, String review, User user, Mess mess) {
 		super();
-		cnt++;
-		this.reviewid= cnt;
 		this.rating = rating;
 		this.review = review;
 		this.user = user;
