@@ -2,22 +2,12 @@ import { useEffect, useState } from "react"
 import { MESS } from "../utils/constants"
 import { EmblaCarousel } from "./EmbalCarousel"
 import MessCard from "./MessCard"
-import { toast, Bounce } from "react-toastify"
+import { Link } from "react-router-dom"
+
 const Home = () => {
   const [mess, setMess] = useState([])
 
   useEffect(() => {
-    // toast.info("Welcome to MessWala 🍳", {
-    //   position: "top-center",
-    //   autoClose: 3000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: "colored",
-    //   transition: Bounce,
-    // })
     fetchMess()
   }, [])
 
@@ -36,7 +26,11 @@ const Home = () => {
 
       <div className="absolute  flex space-x-5 bg-yellow-200 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 p-[20px] rounded-md max-w-[400px]">
         {mess.map((m) => {
-          return <MessCard key={m.messId} messData={m} />
+          return (
+            <Link key={m.messId} to={"/mess/" + m.messId}>
+              <MessCard messData={m} />
+            </Link>
+          )
         })}
       </div>
     </div>

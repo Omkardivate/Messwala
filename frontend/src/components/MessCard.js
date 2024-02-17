@@ -1,12 +1,12 @@
 const MessCard = ({ messData }) => {
+  console.log(messData)
   return (
-    <div className="bg-gray-100 border border-gray w-1/4 h-2/5">
-      <h1>{messData.messName}</h1>
-      <h3>{messData.ownerName}</h3>
-      <p>
-        {messData.city}
-        {messData.landmark}
-        {messData.state}
+    <div className="bg-secondary rounded-lg shadow-md p-6 text-white">
+      <h2 className="text-2xl font-semibold mb-4">{messData.messName}</h2>
+      <p className="text-lg mb-2">Manager: {messData.userName}</p>
+      <p className="text-lg mb-2">Contact: {messData.mobile}</p>
+      <p className="text-lg mb-2">
+        Location: {messData.landmark}, {messData.city}, {messData.state}
       </p>
     </div>
   )

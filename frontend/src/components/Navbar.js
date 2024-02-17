@@ -1,10 +1,27 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { Bounce, toast } from "react-toastify"
 const Navbar = () => {
-  // const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(false)
+  const navigate = useNavigate()
+  useEffect(() => {
+    setLogin(true)
+  }, [])
   const logOut = () => {
     sessionStorage.clear()
+    setLogin(false)
+    toast.success("Logout Successfully,Visit Again", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    })
+    navigate("/")
   }
   return (
     <div className="sticky z-[100] w-full bg-secondary h-20 flex justify-between items-center p-5">
@@ -34,7 +51,11 @@ const Navbar = () => {
           {sessionStorage["email"] ? (
             <>
               <Link to="/profile">
-                <p>👋{sessionStorage["email"]}👋</p>
+                {sessionStorage["userName"] ? (
+                  <p>👋{sessionStorage["userName"]}👋</p>
+                ) : (
+                  <p>👋{sessionStorage["email"]}👋</p>
+                )}
               </Link>
               <button onClick={logOut}>LogOut</button>
             </>

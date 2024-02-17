@@ -68,7 +68,7 @@ const Login = () => {
       await axios.post(`${MESS}/login`, formData).then((response) => {
         const data = response.data
         console.log(data)
-        const { messId } = data
+        const { messId, userName } = data
         if (response.data) {
           toast.success("Login Successfully", {
             position: "top-center",
@@ -83,6 +83,7 @@ const Login = () => {
           })
           console.log("login successfull")
           sessionStorage["messId"] = messId
+          sessionStorage["userName"] = userName
           sessionStorage["email"] = formData.email
           sessionStorage["password"] = formData.password
           sessionStorage["choice"] = formData.choice

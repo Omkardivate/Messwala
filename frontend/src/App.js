@@ -8,17 +8,22 @@ import Home from "./components/Home"
 import Login from "./components/Login"
 import Navbar from "./components/Navbar"
 import Register from "./components/Register"
-import { ToastContainer, toast } from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import Profile from "./components/Profile"
+import MessPlans from "./components/MessPlans"
+import DailyMenu from "./components/DailyMenu"
+import FixedMenu from "./components/FixedMenu"
+import SingleMess from "./components/SingleMess"
 
 function App() {
   return (
-    <div className="bg-primary min-h-screen flex flex-col">
+    <div className="bg-primary min-h-screen w-full flex flex-col">
       <Navbar />
-      <div className="w-full  flex  flex-1 overflow-y-scroll">
+      {/* <div className=" flex  flex-1 w-full overflow-y-scroll">
         <Outlet />
-      </div>
+      </div> */}
+      <Outlet />
       <Footer />
       <ToastContainer
         position="top-right"
@@ -65,6 +70,23 @@ export const appRouter = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+
+      {
+        path: "/messplans",
+        element: <MessPlans />,
+      },
+      {
+        path: "/fixedmenu",
+        element: <FixedMenu />,
+      },
+      {
+        path: "/dailymenu",
+        element: <DailyMenu />,
+      },
+      {
+        path: "/mess/:id",
+        element: <SingleMess />,
       },
     ],
     errorElement: <Error />,

@@ -6,31 +6,47 @@ import { Bounce, toast } from "react-toastify"
 
 const Register = () => {
   let navigate = useNavigate()
-  const [formData, setFormData] = useState({
-    user_name: "",
-    email: "",
-    password: "",
-    city: "",
-    state: "",
-    landmark: "",
-    mobile: "",
-    choice: "", // added choice field
-  })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
+  const [userName, setUserName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [mobile, setMobile] = useState("")
+  const [messName, setMessName] = useState("")
+  const [messTime, setMessTime] = useState("")
+  const [state, setState] = useState("")
+  const [city, setCity] = useState("")
+  const [landmark, setLandMark] = useState("")
+  const [choice, setChoice] = useState("")
+  // const [formData, setFormData] = useState({
+  //   userName: "",
+  //   email: "",
+  //   password: "",
+  //   city: "",
+  //   state: "",
+  //   landmark: "",
+  //   mobile: "",
+  //   choice: "",
+  // })
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }))
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData)
 
-    if (formData.choice === "user") {
-      axios.post(`${USER}/registration`, formData).then((response) => {
+    if (choice === "user") {
+      const body = {
+        userName,
+        password,
+        mobile,
+        email,
+      }
+      axios.post(`${USER}/registration`, body).then((response) => {
         const resData = response.data
         const { userId, userName, password, mobile, email } = resData
         console.log(resData)
@@ -51,7 +67,7 @@ const Register = () => {
           sessionStorage["email"] = email
           sessionStorage["mobile"] = mobile
           sessionStorage["password"] = password
-          sessionStorage["role"] = formData.choice
+          sessionStorage["role"] = choice
         } else {
           navigate("/register")
         }
@@ -61,10 +77,20 @@ const Register = () => {
 
     //Mess Registeration
     else {
-      axios.post(`${MESS}/registration`, formData).then((response) => {
+      const body = {
+        userName,
+        password,
+        mobile,
+        email,
+        messName,
+        messTime,
+        state,
+        city,
+        landmark,
+      }
+      axios.post(`${MESS}/registration`, body).then((response) => {
         const resData = response.data
-        const { userId, userName, password, fname, lname, mobile, email } =
-          resData
+        const { messId, userName, password, mobile, email } = resData
         console.log(resData)
         if (response.status === 200) {
           toast.success("Registration Successful", {
@@ -79,27 +105,18 @@ const Register = () => {
             transition: Bounce,
           })
           sessionStorage["userName"] = userName
-          sessionStorage["userId"] = userId
+          sessionStorage["userId"] = messId
           sessionStorage["email"] = email
           sessionStorage["mobile"] = mobile
           sessionStorage["password"] = password
-          sessionStorage["role"] = formData.choice
+          sessionStorage["role"] = choice
         } else {
           navigate("/register")
         }
         navigate("/login")
       })
     }
-    setFormData({
-      user_name: "",
-      email: "",
-      password: "",
-      city: "",
-      street: "",
-      landmark: "",
-      mobile: "",
-      choice: "",
-    })
+
     // Send the form data to your server or process it as needed
   }
 
@@ -117,10 +134,10 @@ const Register = () => {
             </label>
             <input
               type="text"
-              id="username"
-              name="user_name"
-              value={formData.user_name}
-              onChange={handleChange}
+              id="userName"
+              name="userName"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
@@ -133,8 +150,8 @@ const Register = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
@@ -147,12 +164,63 @@ const Register = () => {
               type="password"
               id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
           </div>
+          <div className="mb-4">
+            <label htmlFor="choice" className="block font-semibold mb-1">
+              Choose Type
+            </label>
+            <select
+              id="choice"
+              name="choice"
+              value={choice}
+              onChange={(e) => setChoice(e.target.value)}
+              className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
+              required
+            >
+              <option value="">Select One</option>
+              <option value="user">User</option>
+              <option value="mess">Mess</option>
+            </select>
+          </div>
+          {choice == "mess" ? (
+            <>
+              <div className="mb-4">
+                <label htmlFor="messName" className="block font-semibold mb-1">
+                  MessName
+                </label>
+                <input
+                  type="text"
+                  id="messName"
+                  name="messName"
+                  value={messName}
+                  onChange={(e) => setMessName(e.target.value)}
+                  className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="messTime" className="block font-semibold mb-1">
+                  MessTime
+                </label>
+                <input
+                  type="text"
+                  id="messTime"
+                  name="messTime"
+                  value={messTime}
+                  onChange={(e) => setMessTime(e.target.value)}
+                  className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
+                  required
+                />
+              </div>
+            </>
+          ) : (
+            " "
+          )}
           <div className="mb-4">
             <label htmlFor="city" className="block font-semibold mb-1">
               City
@@ -161,8 +229,8 @@ const Register = () => {
               type="text"
               id="city"
               name="city"
-              value={formData.city}
-              onChange={handleChange}
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
@@ -175,8 +243,8 @@ const Register = () => {
               type="text"
               id="state"
               name="state"
-              value={formData.state}
-              onChange={handleChange}
+              value={state}
+              onChange={(e) => setState(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
@@ -189,8 +257,8 @@ const Register = () => {
               type="text"
               id="landmark"
               name="landmark"
-              value={formData.landmark}
-              onChange={handleChange}
+              value={landmark}
+              onChange={(e) => setLandMark(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
@@ -203,29 +271,13 @@ const Register = () => {
               type="text"
               id="mobile"
               name="mobile"
-              value={formData.mobile}
-              onChange={handleChange}
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="choice" className="block font-semibold mb-1">
-              Choose Type
-            </label>
-            <select
-              id="choice"
-              name="choice"
-              value={formData.choice}
-              onChange={handleChange}
-              className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
-              required
-            >
-              <option value="">Select One</option>
-              <option value="user">User</option>
-              <option value="mess">Mess</option>
-            </select>
-          </div>
+
           <div className="text-center">
             <button
               type="submit"

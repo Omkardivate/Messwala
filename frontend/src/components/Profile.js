@@ -24,6 +24,14 @@ const Profile = () => {
         })
     }
   }
-  return <div>{sessionStorage["choice"] == "user" ? <User /> : <Mess />}</div>
+  return (
+    <div className="w-full">
+      {sessionStorage["choice"] == "user" ? (
+        <User userId={sessionStorage["userId"]} />
+      ) : (
+        <Mess messId={sessionStorage["messId"]} />
+      )}
+    </div>
+  )
 }
 export default Profile
