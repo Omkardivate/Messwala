@@ -37,7 +37,12 @@ public class MessServiceImpl implements MessService {
 		
 		return messDao.getMess(m.getEmail(), m.getPassword());
 	}
-
+     
+	public Mess getMessByEmail(String email) {
+		return messDao.getByEmail(email);
+	}
+	
+	
 	@Override
 	public List<Mess> getAllMess() {
 		
@@ -78,6 +83,22 @@ public class MessServiceImpl implements MessService {
 	public List<Object> getParticularMess(int id) {
 		// TODO Auto-generated method stub
 		return messDao.getOneMess(id);
+	}
+
+	@Override
+	public int updateMessPlans(String messPlan,double messPlanPrice ,int id) {
+		 Mess m1=messDao.getMessById(id);
+		 if(m1!=null) {
+	      messDao.updateMessPlans(messPlan,messPlanPrice,id);
+	      return 1;
+		 }
+		return 0;
+	}
+
+	@Override
+	public int forgotPassword(String password, String email) {
+		
+		return messDao.forgotPassword(password,email);
 	}
 
 	

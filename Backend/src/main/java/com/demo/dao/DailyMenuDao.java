@@ -15,7 +15,7 @@ public interface DailyMenuDao extends JpaRepository<DailyMenu, Integer> {
 	
 	@Modifying
 	@Transactional
-	@Query(value="update daily_menu set availbility=:availbility,menu_name=:menuName,price=:price where mess_id=:messId",nativeQuery = true)
-	int updateTodayMenu(String availbility,String menuName,double price,int messId);
+	@Query(value="update daily_menu set availbility=:availbility,dailymenu_name=:dailymenuName,dailyprice=:dailyprice where mess_id=:messId",nativeQuery = true)
+	int updateTodayMenu(String availbility,String dailymenuName,double dailyprice,int messId);
 
 }

@@ -97,6 +97,29 @@ public class MessController {
 		return ResponseEntity.ok(m);
 		
 	}
+	@PutMapping("/messplan/{id}")
+	public ResponseEntity<?> updateMessPlans(@RequestBody Mess m,@PathVariable int id){
+	   int n=messService.updateMessPlans(m.getMessPlan(),m.getMessPlanPrice(),id);
+		if(n!=0) {
+			return ResponseEntity.ok(n);
+		}
+		
+		return ResponseEntity.noContent().build();
+				
+		
+	}
 	
+	@PutMapping("/forgot")
+	public ResponseEntity<?> forgotPassword(@RequestBody Mess m){
+		
+		Mess m1=messService.getMessByEmail(m.getEmail());
+		if(m1!=null) {
+			messService.forgotPassword(m.getPassword(),m.getEmail());
+			return ResponseEntity.ok(1);
+		}
+		
+		return ResponseEntity.noContent().build();
+		
+	}
 	
 }

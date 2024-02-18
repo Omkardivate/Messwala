@@ -67,4 +67,14 @@ public class UserController {
 		return ResponseEntity.ok("Mess not found");
 	}
 	
+	@PutMapping("/forgot")
+	public ResponseEntity<?> forgotPassword(@RequestBody User u){
+		User u1=userService.getUserByEmailId(u.getEmail());
+		if(u1!=null) {
+		    userService.forgotPassword(u.getPassword(),u.getEmail());
+			return ResponseEntity.ok(1);
+		}
+		
+		return ResponseEntity.noContent().build();
+	}
 }

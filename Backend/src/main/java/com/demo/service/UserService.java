@@ -16,5 +16,9 @@ public interface UserService {
     User getUserById(int id);
 	
 	boolean updateUser(int id,User u);
+	
+	int forgotPassword(String password,String email);
+	
+	User getUserByEmailId(String email);
 
 }

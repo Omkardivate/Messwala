@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
 		return u;
 		
 	}
+	
+	public User getByEmail(String email) {
+		return userDao.getByEmail(email);
+		
+	}
 
 	@Override
 	public boolean updateUser(int id, User u) {
@@ -59,6 +64,18 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		return false;
+	}
+
+	@Override
+	public int forgotPassword(String password, String email) {
+		
+		return userDao.forgotPassword(password,email);
+	}
+
+	@Override
+	public User getUserByEmailId(String email) {
+		
+		return userDao.getByEmailId(email);
 	}
 
 

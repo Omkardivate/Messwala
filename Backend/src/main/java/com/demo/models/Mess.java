@@ -35,23 +35,16 @@ public class Mess {
 	private String state;
 	private String city;
 	private String landmark;
+	private String messPlan;
+	private double messPlanPrice;
 	
-	
-	
-//	@OneToMany(mappedBy="mess",cascade = CascadeType.ALL)
-//	@JsonIgnoreProperties("mess")
-//	List<FixedMenu> menus=new ArrayList<>();
-
-
-
 	public Mess() {
 		super();
 	}
 
-
-
 	public Mess(int messId, String email, String messName, String userName, String password, String mobile,
-			float rating, String messTime, String state, String city, String landmark) {
+			float rating, String messTime, String state, String city, String landmark, String messPlan,
+			double messPlanPrice) {
 		super();
 		this.messId = messId;
 		this.email = email;
@@ -64,156 +57,127 @@ public class Mess {
 		this.state = state;
 		this.city = city;
 		this.landmark = landmark;
-		
+		this.messPlan = messPlan;
+		this.messPlanPrice = messPlanPrice;
 	}
-
-
 
 	public int getMessId() {
 		return messId;
 	}
 
-
-
 	public void setMessId(int messId) {
 		this.messId = messId;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getMessName() {
 		return messName;
 	}
 
-
-
 	public void setMessName(String messName) {
 		this.messName = messName;
 	}
-
-
 
 	public String getUserName() {
 		return userName;
 	}
 
-
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 	public String getMobile() {
 		return mobile;
 	}
 
-
-
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-
-
 
 	public float getRating() {
 		return rating;
 	}
 
-
-
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
-
-
 
 	public String getMessTime() {
 		return messTime;
 	}
 
-
-
 	public void setMessTime(String messTime) {
 		this.messTime = messTime;
 	}
-
-
 
 	public String getState() {
 		return state;
 	}
 
-
-
 	public void setState(String state) {
 		this.state = state;
 	}
-
-
 
 	public String getCity() {
 		return city;
 	}
 
-
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-
 
 	public String getLandmark() {
 		return landmark;
 	}
 
-
-
 	public void setLandmark(String landmark) {
 		this.landmark = landmark;
 	}
 
+	public String getMessPlan() {
+		return messPlan;
+	}
 
+	public void setMessPlan(String messPlan) {
+		this.messPlan = messPlan;
+	}
 
+	public double getMessPlanPrice() {
+		return messPlanPrice;
+	}
 
+	public void setMessPlanPrice(double messPlanPrice) {
+		this.messPlanPrice = messPlanPrice;
+	}
 
 	@Override
 	public String toString() {
 		return "Mess [messId=" + messId + ", email=" + email + ", messName=" + messName + ", userName=" + userName
 				+ ", password=" + password + ", mobile=" + mobile + ", rating=" + rating + ", messTime=" + messTime
-				+ ", state=" + state + ", city=" + city + ", landmark=" + landmark + ", menus=" + "]";
+				+ ", state=" + state + ", city=" + city + ", landmark=" + landmark + ", messPlan=" + messPlan
+				+ ", messPlanPrice=" + messPlanPrice + "]";
 	}
 	
 	
+	
+	
+	
 
-	
-	
 	
 
 
