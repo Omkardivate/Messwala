@@ -20,10 +20,10 @@ function App() {
   return (
     <div className="bg-primary min-h-screen w-full flex flex-col">
       <Navbar />
-      {/* <div className=" flex  flex-1 w-full overflow-y-scroll">
+      <div className=" flex flex-1 h-full overflow-y-scroll">
         <Outlet />
-      </div> */}
-      <Outlet />
+      </div>
+      {/* <Outlet /> */}
       <Footer />
       <ToastContainer
         position="top-right"

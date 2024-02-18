@@ -5,8 +5,8 @@ import { Bounce, toast } from "react-toastify"
 const FixedMenu = () => {
   const [formData, setFormData] = useState({
     mess: { messId: sessionStorage["messId"] },
-    menuName: "",
-    price: "",
+    fixedmenuName: "",
+    fixedprice: "",
     // availbility: "",
   })
 
@@ -25,8 +25,8 @@ const FixedMenu = () => {
       if (response.data) {
         setFormData({
           mess: { messId: sessionStorage["messId"] },
-          menuName: "",
-          price: "",
+          fixedmenuName: "",
+          fixedprice: "",
           // availbility: "",
         })
         toast.success("Fixed Menu is Add", {
@@ -59,9 +59,9 @@ const FixedMenu = () => {
             </label>
             <input
               type="text"
-              id="menuName"
-              name="menuName"
-              value={formData.menuName}
+              id="fixedmenuName"
+              name="fixedmenuName"
+              value={formData.fixedmenuName}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
@@ -74,9 +74,9 @@ const FixedMenu = () => {
             </label>
             <input
               type="number"
-              id="price"
-              name="price"
-              value={formData.price}
+              id="fixedprice"
+              name="fixedprice"
+              value={formData.fixedprice}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
