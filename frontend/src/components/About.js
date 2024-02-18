@@ -1,8 +1,4 @@
 const About = () => {
-  return (
-    <div>
-      <h1>About Page</h1>
-    </div>
-  )
+  return <div className="bg-primary w-full"></div>
 }
 export default About

@@ -5,8 +5,8 @@ import { Bounce, toast } from "react-toastify"
 const DailyMenu = () => {
   const [formData, setFormData] = useState({
     messId: { messId: sessionStorage["messId"] },
-    menuName: "",
-    price: "",
+    dailymenuName: "",
+    dailyprice: "",
     availbility: "",
   })
 
@@ -27,8 +27,8 @@ const DailyMenu = () => {
         if (response.data) {
           setFormData({
             messId: { messId: sessionStorage["messId"] },
-            menuName: "",
-            price: "",
+            dailymenuName: "",
+            dailyprice: "",
             availbility: "",
           })
           toast.success("Daily Menu is Add", {
@@ -56,14 +56,14 @@ const DailyMenu = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">DailyMenu Form</h2>
         <form onSubmit={handleSubmit} className="">
           <div className="mb-4">
-            <label htmlFor="menu_ame" className="block font-semibold mb-1">
+            <label htmlFor="dailymenuName" className="block font-semibold mb-1">
               MenuName
             </label>
             <input
               type="text"
-              id="menuName"
-              name="menuName"
-              value={formData.menuName}
+              id="dailymenuName"
+              name="dailymenuName"
+              value={formData.dailymenuName}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
@@ -84,14 +84,14 @@ const DailyMenu = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="price" className="block font-semibold mb-1">
+            <label htmlFor="dailyprice" className="block font-semibold mb-1">
               Price
             </label>
             <input
               type="number"
-              id="price"
-              name="price"
-              value={formData.price}
+              id="dailyprice"
+              name="dailyprice"
+              value={formData.dailyprice}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
