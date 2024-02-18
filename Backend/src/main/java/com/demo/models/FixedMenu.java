@@ -21,8 +21,8 @@ public class FixedMenu {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int itemId;
 	
-	private String menuName;
-	private double price;
+	private String fixedmenuName;
+	private double fixedprice;
 	
 	@ManyToOne
 //	@JsonIgnoreProperties("menus")
@@ -33,11 +33,11 @@ public class FixedMenu {
 		super();
 	}
 
-	public FixedMenu(int itemId, String menuName, double price, Mess mess) {
+	public FixedMenu(int itemId, String fixedmenuName, double fixedprice, Mess mess) {
 		super();
 		this.itemId = itemId;
-		this.menuName = menuName;
-		this.price = price;
+		this.fixedmenuName = fixedmenuName;
+		this.fixedprice = fixedprice;
 		this.mess = mess;
 	}
 
@@ -49,20 +49,20 @@ public class FixedMenu {
 		this.itemId = itemId;
 	}
 
-	public String getMenuName() {
-		return menuName;
+	public String getFixedmenuName() {
+		return fixedmenuName;
 	}
 
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
+	public void setFixedmenuName(String fixedmenuName) {
+		this.fixedmenuName = fixedmenuName;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getFixedprice() {
+		return fixedprice;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setFixedprice(double fixedprice) {
+		this.fixedprice = fixedprice;
 	}
 
 	public Mess getMess() {
@@ -75,11 +75,11 @@ public class FixedMenu {
 
 	@Override
 	public String toString() {
-		return "FixedMenu [itemId=" + itemId + ", menuName=" + menuName + ", price=" + price + ", mess=" + mess + "]";
+		return "FixedMenu [itemId=" + itemId + ", fixedmenuName=" + fixedmenuName + ", fixedprice=" + fixedprice
+				+ ", mess=" + mess + "]";
 	}
-	
 
-	
+
  
 
 	

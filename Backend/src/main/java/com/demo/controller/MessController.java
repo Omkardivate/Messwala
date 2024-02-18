@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.models.Mess;
+import com.demo.models.MessRating;
 import com.demo.service.MessServiceImpl;
 
 @RestController
@@ -84,7 +85,18 @@ public class MessController {
 		}
 		return ResponseEntity.noContent().build();
 	}
-	
+	@GetMapping("/getonemess/{id}")
+	public ResponseEntity<?> getOne(@PathVariable int id){
+		
+		List<Object> m=messService.getParticularMess(id);
+		
+		if(m==null) {
+			return ResponseEntity.noContent().build();
+		}
+		
+		return ResponseEntity.ok(m);
+		
+	}
 	
 	
 }

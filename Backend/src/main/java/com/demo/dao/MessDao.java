@@ -23,6 +23,8 @@ public interface MessDao extends JpaRepository<Mess, Integer> {
 	
 	@Query(value="select * from mess where mess_id=:id",nativeQuery=true)
 	Mess getMessById(int id);
+	@Query(value=" select  availbility,dailymenu_name,fixedmenu_name,dailyprice,fixedprice,mess_review_id,reviews from daily_menu  join fixedmenu on daily_menu.mess_id=fixedmenu.mess_id  join messreviews on daily_menu.mess_id=messreviews.mess_id where daily_menu.mess_id=:id",nativeQuery=true)
+	List<Object> getOneMess(int id);
 	
 	
 }

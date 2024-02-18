@@ -3,6 +3,7 @@ package com.demo.service;
 import java.util.List;
 
 import com.demo.models.Mess;
+import com.demo.models.MessRating;
 
 public interface MessService {
 
@@ -15,5 +16,6 @@ public interface MessService {
 	Mess getMessById(int id);
 	
 	Mess updateMess(int id,Mess m);
+	
 	
 }

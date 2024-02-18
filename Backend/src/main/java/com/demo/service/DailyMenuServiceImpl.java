@@ -16,7 +16,7 @@ public class DailyMenuServiceImpl implements DailyMenuService {
 		
 		DailyMenu dm1=dd.getDailyMenuById(id);
 		if(dm1!=null) {
-			dd.updateTodayMenu(dm.getAvailbility(),dm.getMenuName(),dm.getPrice(),id);
+			dd.updateTodayMenu(dm.getAvailbility(),dm.getDailymenuName(),dm.getDailyprice(),id);
 			return dm;
 		}
 		

@@ -17,10 +17,10 @@ public class DailyMenu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int menuId;
-	private String menuName;
+	private int dailymenuId;
+	private String dailymenuName;
 	private String availbility;
-	private double price;
+	private double dailyprice;
 	
 	@OneToOne
 	@JoinColumn(name="messId")
@@ -31,29 +31,29 @@ public class DailyMenu {
 		super();
 	}
 
-	public DailyMenu(int menuId, String menuName, String availbility, double price, Mess messId) {
+	public DailyMenu(int dailymenuId, String dailymenuName, String availbility, double dailyprice, Mess messId) {
 		super();
-		this.menuId = menuId;
-		this.menuName = menuName;
+		this.dailymenuId = dailymenuId;
+		this.dailymenuName = dailymenuName;
 		this.availbility = availbility;
-		this.price = price;
+		this.dailyprice = dailyprice;
 		this.messId = messId;
 	}
 
-	public int getMenuId() {
-		return menuId;
+	public int getDailymenuId() {
+		return dailymenuId;
 	}
 
-	public void setMenuId(int menuId) {
-		this.menuId = menuId;
+	public void setDailymenuId(int dailymenuId) {
+		this.dailymenuId = dailymenuId;
 	}
 
-	public String getMenuName() {
-		return menuName;
+	public String getDailymenuName() {
+		return dailymenuName;
 	}
 
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
+	public void setDailymenuName(String dailymenuName) {
+		this.dailymenuName = dailymenuName;
 	}
 
 	public String getAvailbility() {
@@ -64,12 +64,12 @@ public class DailyMenu {
 		this.availbility = availbility;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getDailyprice() {
+		return dailyprice;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setDailyprice(double dailyprice) {
+		this.dailyprice = dailyprice;
 	}
 
 	public Mess getMessId() {
@@ -82,10 +82,9 @@ public class DailyMenu {
 
 	@Override
 	public String toString() {
-		return "DailyMenu [menuId=" + menuId + ", menuName=" + menuName + ", availbility=" + availbility + ", price="
-				+ price + ", messId=" + messId + "]";
+		return "DailyMenu [dailymenuId=" + dailymenuId + ", dailymenuName=" + dailymenuName + ", availbility="
+				+ availbility + ", dailyprice=" + dailyprice + ", messId=" + messId + "]";
 	}
-
 
 	
 

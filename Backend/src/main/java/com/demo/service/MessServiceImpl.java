@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.demo.dao.MessDao;
 import com.demo.models.Mess;
+import com.demo.models.MessRating;
 
 @Service
 public class MessServiceImpl implements MessService {
@@ -73,5 +74,12 @@ public class MessServiceImpl implements MessService {
 	
 	return null;
 	}
+
+	public List<Object> getParticularMess(int id) {
+		// TODO Auto-generated method stub
+		return messDao.getOneMess(id);
+	}
+
+	
 
 }
