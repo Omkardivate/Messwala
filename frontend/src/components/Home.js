@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 
 const Home = () => {
   const [mess, setMess] = useState([])
+  const [filterMess, setFilterMess] = useState([])
+  const [text, setText] = useState("")
 
   useEffect(() => {
     fetchMess()
@@ -14,19 +16,41 @@ const Home = () => {
   const fetchMess = async () => {
     const data = await fetch(`${MESS}/`)
     const json = await data.json()
-    //  console.log(json)
+    console.log(json)
     setMess(json)
+    setFilterMess(json)
+  }
+
+  const handleSearch = () => {
+    const data = mess.filter((m) => {
+      return (
+        m.city.toLowerCase().includes(text.toLowerCase()) ||
+        m.landmark.toLowerCase().includes(text.toLowerCase()) ||
+        m.state.toLowerCase().includes(text.toLowerCase())
+      )
+    })
+
+    setFilterMess(data)
   }
 
   return (
     <div className="flex flex-col space-y-2 w-full p-5 mt-3">
+      <div>
+        <input
+          type="text"
+          className=" p-5 rounded-md "
+          onChange={(e) => setText(e.target.value)}
+          placeholder="search by location.."
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
       <div className="max-w-[800px] h-1/2 mx-auto">
         <div className="w-full h-full">
           <EmblaCarousel />
         </div>
         <h1 className="text-2xl font-semibold m-3">All Mess</h1>
         <div className="flex space-x-5  p-5 rounded-md max-w-[400px] h-full">
-          {mess.map((m) => {
+          {filterMess.map((m) => {
             return (
               <Link
                 key={m.messId}
