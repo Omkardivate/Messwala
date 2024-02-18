@@ -15,6 +15,7 @@ import MessPlans from "./components/MessPlans"
 import DailyMenu from "./components/DailyMenu"
 import FixedMenu from "./components/FixedMenu"
 import SingleMess from "./components/SingleMess"
+import Forgot from "./components/Forgot"
 
 function App() {
   return (
@@ -87,6 +88,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/mess/:id",
         element: <SingleMess />,
+      },
+      {
+        path: "/forgotpass",
+        element: <Forgot />,
       },
     ],
     errorElement: <Error />,

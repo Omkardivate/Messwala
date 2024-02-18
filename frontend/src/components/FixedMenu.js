@@ -46,11 +46,11 @@ const FixedMenu = () => {
 
   return (
     <div className="w-full h-full bg-yellow-200 flex items-center justify-around">
-      <img
+      {/* <img
         src="https://media.istockphoto.com/id/476040512/photo/daily-specials-menu.webp?b=1&s=170667a&w=0&k=20&c=CGyou7eUoEKHxUNDRClOHFOjRncO8wuKKy7HDrhuRPw="
-        className="w-[500px] h-[500px]"
-      />
-      <div className="max-w-md w-full h-1/2 p-6 bg-white rounded-lg shadow-lg">
+        className="w-[100px] h-[100px]"
+      /> */}
+      <div className="max-w-md w-full  p-6 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Fixed Form</h2>
         <form onSubmit={handleSubmit} className="">
           <div className="mb-4">
@@ -61,6 +61,7 @@ const FixedMenu = () => {
               type="text"
               id="fixedmenuName"
               name="fixedmenuName"
+              placeholder="Chicken"
               value={formData.fixedmenuName}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

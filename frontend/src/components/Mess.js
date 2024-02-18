@@ -1,10 +1,14 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { MESS } from "../utils/constants"
 import { Bounce, toast } from "react-toastify"
+import DailyMenu from "./DailyMenu"
+import FixedMenu from "./FixedMenu"
+import MessPlans from "./MessPlans"
 
 const Mess = () => {
+  const param = useParams()
   const [userName, setUserName] = useState("")
   const [messName, setMessName] = useState("")
   const [email, setEmail] = useState("")
@@ -14,6 +18,8 @@ const Mess = () => {
   const [mobile, setMobile] = useState("")
   const [state, setState] = useState("")
   const [password, setPassword] = useState("")
+
+  const [status, setStatus] = useState("dailymenu")
 
   useEffect(() => {
     fetchMess()
@@ -34,7 +40,8 @@ const Mess = () => {
       setPassword(data.password)
     })
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     const body = {
       userName,
       city,
@@ -49,7 +56,7 @@ const Mess = () => {
     await axios
       .put(`${MESS}/${sessionStorage["messId"]}`, body)
       .then((response) => {
-        if (response.data == 200) {
+        if (response.data === 200) {
           toast.success("Profile update Successfully", {
             position: "top-center",
             autoClose: 5000,
@@ -65,10 +72,43 @@ const Mess = () => {
       })
   }
   return (
-    <div className="bg-gray-200 h-full w-full flex items-center justify-around">
+    <div className="bg-gray-200 h-full w-full flex  justify-around">
       <div className="flex flex-col">
-        <div className="space-x-5">
-          <Link
+        <div className=" flex flex-col items-center space-y-[100px] mt-[200px]">
+          <div className="flex space-x-5">
+            <button
+              onClick={() => setStatus("messplan")}
+              className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
+            >
+              AddMessPlan
+            </button>
+
+            <button
+              onClick={() => setStatus("messcard")}
+              className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
+            >
+              AddMenuCardMenu
+            </button>
+            <button
+              onClick={() => setStatus("dailymenu")}
+              className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
+            >
+              AddDailyMenu
+            </button>
+          </div>
+          <div>
+            {status === "dailyMenu" ? (
+              <DailyMenu />
+            ) : status === "messcard" ? (
+              <FixedMenu />
+            ) : status == "messplan" ? (
+              <MessPlans />
+            ) : (
+              <DailyMenu />
+            )}
+          </div>
+
+          {/* <Link
             to="/messplans"
             className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
           >
@@ -85,10 +125,10 @@ const Mess = () => {
             className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
           >
             AddDailyMenu
-          </Link>
+          </Link> */}
         </div>
       </div>
-      <div className="bg-yellow-200 w-2/5">
+      <div className="bg-yellow-200 w-2/5 mt-5 mb-5">
         <div className=" p-5 bg-white rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">
             👤{userName}👤

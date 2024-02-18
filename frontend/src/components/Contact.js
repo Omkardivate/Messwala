@@ -52,8 +52,8 @@ const Contact = () => {
   return (
     <div className="w-full flex  justify-around items-center">
       <img src="./contact.svg" className="w-[600px] h-[600px] ml-10" />
-      <div className=" w-1/4 mx-auto mt-10 p-6 h-2/3 border rounded-lg shadow-lg">
-        <h2 className="text-xl font-semibold mb-4 text-center">Contact Us</h2>
+      <div className=" w-1/4 mx-auto mt-10 p-6 h-2/3 border rounded-lg shadow-lg bg-primary">
+        <h2 className="text-2xl font-bold mb-4 text-center">Contact Us</h2>
         <form onSubmit={handleSubmit} ref={form}>
           <div className="mb-4">
             <label htmlFor="name" className="block text-secondary font-medium">

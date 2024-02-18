@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { USER, MESS } from "../utils/constants"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Bounce, toast } from "react-toastify"
 
 const Login = () => {
@@ -165,6 +165,12 @@ const Login = () => {
               Login
             </button>
           </div>
+          <p className="text-center mt-2 text-[18px]">
+            Forgot Password ?{" "}
+            <Link to="/forgotpass" className="underline text-blue-500">
+              Forgot Password
+            </Link>
+          </p>
         </form>
       </div>
     </div>

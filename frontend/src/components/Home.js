@@ -19,22 +19,40 @@ const Home = () => {
   }
 
   return (
-    <div className=" relative flex flex-col  space-x-2 w-full p-5 mt-3">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <EmblaCarousel />
-      </div>
-
-      <div className="absolute  flex space-x-5 bg-yellow-200 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 p-[20px] rounded-md max-w-[400px]">
-        {mess.map((m) => {
-          return (
-            <Link key={m.messId} to={"/mess/" + m.messId}>
-              <MessCard messData={m} />
-            </Link>
-          )
-        })}
+    <div className="flex flex-col space-y-2 w-full p-5 mt-3">
+      <div className="max-w-[800px] h-1/2 mx-auto">
+        <div className="w-full h-full">
+          <EmblaCarousel />
+        </div>
+        <h1 className="text-2xl font-semibold m-3">All Mess</h1>
+        <div className="flex space-x-5  p-5 rounded-md max-w-[400px] h-full">
+          {mess.map((m) => {
+            return (
+              <Link
+                key={m.messId}
+                to={"/mess/" + m.messId}
+                className="flex-grow"
+              >
+                <MessCard messData={m} />
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
 }
 
 export default Home
+
+// <div className="flex space-x-5 bg-yellow-200 p-5 rounded-md max-w-[400px] h-full">
+//   {mess.map((m) => (
+//     <Link key={m.messId} to={"/mess/" + m.messId} className="flex-grow">
+//       <div className="flex flex-col justify-between bg-white rounded-md shadow-md p-4 w-full h-full">
+//         <h2 className="text-lg font-semibold">{m.name}</h2>
+//         <p className="text-gray-600">{m.description}</p>
+//         {/* Add any other content you want to display */}
+//       </div>
+//     </Link>
+//   ))}
+// </div>
