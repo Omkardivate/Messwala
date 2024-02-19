@@ -16,6 +16,7 @@ import DailyMenu from "./components/DailyMenu"
 import FixedMenu from "./components/FixedMenu"
 import SingleMess from "./components/SingleMess"
 import Forgot from "./components/Forgot"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <div className=" flex flex-1 h-full overflow-y-scroll">
         <Outlet />
       </div>
-      {/* <Outlet /> */}
+
       <Footer />
       <ToastContainer
         position="top-right"
@@ -70,24 +71,40 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <ProtectedRoute
+            element={<Profile />}
+            allowedRoles={["mess", "user"]}
+          />
+        ),
       },
 
       {
         path: "/messplans",
-        element: <MessPlans />,
+        element: (
+          <ProtectedRoute element={<MessPlans />} allowedRoles={["mess"]} />
+        ),
       },
       {
         path: "/fixedmenu",
-        element: <FixedMenu />,
+        element: (
+          <ProtectedRoute element={<FixedMenu />} allowedRoles={["mess"]} />
+        ),
       },
       {
         path: "/dailymenu",
-        element: <DailyMenu />,
+        element: (
+          <ProtectedRoute element={<DailyMenu />} allowedRoles={["mess"]} />
+        ),
       },
       {
         path: "/mess/:id",
-        element: <SingleMess />,
+        element: (
+          <ProtectedRoute
+            element={<SingleMess />}
+            allowedRoles={["mess", "user"]}
+          />
+        ),
       },
       {
         path: "/forgotpass",

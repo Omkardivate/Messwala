@@ -19,32 +19,28 @@ const SingleMess = () => {
     fetchMessData()
   }, [])
 
-  //rating handler
-  const handleRating = async () => {
-    const body = {
-      messId,
-      rating,
-    }
-    await axios.post(`${MESSRATING}/${id}`, body).then((response) => {
-      if (response.data != null) {
-        toast.success("Rating add Successfully", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        })
-      }
-    })
-  }
-
-  //review handler
-
-  const handleReview = () => {}
+  // //rating handler
+  // const handleRating = async () => {
+  //   const body = {
+  //     messId,
+  //     rating,
+  //   }
+  //   await axios.post(`${MESSRATING}/${id}`, body).then((response) => {
+  //     if (response.data != null) {
+  //       toast.success("Rating add Successfully", {
+  //         position: "top-center",
+  //         autoClose: 5000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "colored",
+  //         transition: Bounce,
+  //       })
+  //     }
+  //   })
+  // }
 
   const fetchMessData = async () => {
     await axios.get(`${GETSINGLEMESS}/${id}`).then((response) => {
@@ -76,126 +72,87 @@ const SingleMess = () => {
         <>
           {status === "rating" ? (
             <Rating />
-          ) : // <div className="max-w-md w-full h-1/2 p-6 bg-white rounded-lg shadow-lg">
-          //   <h2 className="text-2xl font-bold mb-6 text-center">Rating</h2>
-          //   <form onSubmit={handleRating} className="">
-          //     <div className="mb-4">
-          //       <label htmlFor="rating" className="block font-semibold mb-1">
-          //         Rating
-          //       </label>
-          //       <input
-          //         type="text"
-          //         id="rating"
-          //         name="rating"
-          //         placeholder="1-5 rating only"
-          //         value={rating}
-          //         onChange={(e) => setRating(e.target.value)}
-          //         className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
-          //         required
-          //       />
-          //     </div>
-
-          //     <div className="text-center">
-          //       <button
-          //         type="submit"
-          //         className="bg-blue-500  text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-          //       >
-          //         GiveRating
-          //       </button>
-          //     </div>
-          //   </form>
-          // </div>
-          status === "review" ? (
-            // <div className="max-w-md w-full h-1/2 p-6 bg-white rounded-lg shadow-lg">
-            //   <h2 className="text-2xl font-bold mb-6 text-center">Review</h2>
-            //   <form onSubmit={handleReview} className="">
-            //     <div className="mb-4">
-            //       <label htmlFor="reviews" className="block font-semibold mb-1">
-            //         Review
-            //       </label>
-            //       <input
-            //         type="text"
-            //         id="reviews"
-            //         name="reviews"
-            //         placeholder="good review only...."
-            //         value={reviews}
-            //         onChange={(e) => setReviews(e.target.value)}
-            //         className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
-            //         required
-            //       />
-            //     </div>
-
-            //     <div className="text-center">
-            //       <button
-            //         type="submit"
-            //         className="bg-blue-500  text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            //       >
-            //         GiveReview
-            //       </button>
-            //     </div>
-            //   </form>
-            // </div>
+          ) : status === "review" ? (
             <Review />
           ) : (
             <Rating />
-            // <div className="max-w-md w-full h-1/2 p-6 bg-white rounded-lg shadow-lg">
-            //   <h2 className="text-2xl font-bold mb-6 text-center">Rating</h2>
-            //   <form onSubmit={handleRating} className="">
-            //     <div className="mb-4">
-            //       <label htmlFor="rating" className="block font-semibold mb-1">
-            //         Rating
-            //       </label>
-            //       <input
-            //         type="text"
-            //         id="rating"
-            //         name="rating"
-            //         placeholder="1-5 rating only"
-            //         value={rating}
-            //         onChange={(e) => setRating(e.target.value)}
-            //         className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
-            //         required
-            //       />
-            //     </div>
-
-            //     <div className="text-center">
-            //       <button
-            //         type="submit"
-            //         className="bg-blue-500  text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            //       >
-            //         GiveRating
-            //       </button>
-            //     </div>
-            //   </form>
-            // </div>
           )}
         </>
       </div>
 
       {mess.length != 0 ? (
-        <div className="bg-white flex flex-col  justify-center w-2/5  rounded-lg p-5 shadow-lg space-y-3">
-          <h1 className="text-xl font-semibold items-center">
+        // <div className="bg-white flex flex-col  justify-center w-2/5  rounded-lg p-5 shadow-lg space-y-3">
+        //   <h1 className="text-xl font-semibold items-center">
+        //     {ratings ? ratings[5] : ""}
+        //   </h1>
+        //   <h1>OwnerName: {ratings ? ratings[11] : ""}</h1>
+        //   <p>DailyMenu: {mess[0][1]}</p>
+        //   <p>DailyMenuPrice: {mess[0][3]}</p>
+        //   <p>DailyMenuTime: {mess[0][0]}</p>
+        //   <p>Menu</p>
+        //   {mess.map((m) => {
+        //     return (
+        //       <div>
+        //         <h1>
+        //           {m[2]}: {m[4]}
+        //         </h1>
+        //         {/* <h1>Price: {m[4]}</h1> */}
+        //       </div>
+        //     )
+        //   })}
+        //   <p>Contact: {ratings ? ratings[7] : ""}</p>
+        //   <p>Rating:{ratings ? ratings[0] : ""} </p>
+        //   <p>MessTiming: {ratings ? ratings[6] : ""}</p>
+        //   <p>
+        //     Address:{" "}
+        //     {`${ratings ? ratings[4] : ""},${ratings ? ratings[2] : ""},${
+        //       ratings ? ratings[10] : ""
+        //     }`}
+        //   </p>
+        // </div>
+
+        <div className="bg-white flex flex-col justify-center w-2/5 rounded-lg p-5 shadow-lg space-y-3">
+          <h1 className="text-2xl font-bold text-center text-gray-800">
             {ratings ? ratings[5] : ""}
           </h1>
-          <h1>OwnerName: {ratings ? ratings[11] : ""}</h1>
-          <p>DailyMenu: {mess[0][1]}</p>
-          <p>DailyMenuPrice: {mess[0][3]}</p>
-          <p>DailyMenuTime: {mess[0][0]}</p>
-          {mess.map((m) => {
-            return (
-              <div>
-                <h1>
-                  {m[2]}: {m[4]}
-                </h1>
-                {/* <h1>Price: {m[4]}</h1> */}
-              </div>
-            )
-          })}
-          <p>Contact: {ratings ? ratings[7] : ""}</p>
-          <p>Rating:{ratings ? ratings[0] : ""} </p>
-          <p>MessTiming: {ratings ? ratings[6] : ""}</p>
-          <p>{`${ratings ? ratings[4] : ""},${ratings ? ratings[2] : ""},${
-            ratings ? ratings[10] : ""
-          }`}</p>
+          <h1 className="text-lg font-semibold text-gray-700">
+            OwnerName: {ratings ? ratings[11] : ""}
+          </h1>
+          <p className="text-gray-600">DailyMenu: {mess[0][1]}</p>
+          <p className="text-gray-600">DailyMenuPrice: {mess[0][3]}</p>
+          <p className="text-gray-600">DailyMenuTime: {mess[0][0]}</p>
+          <p className="text-gray-600">Menu</p>
+          {mess.map((m, index) => (
+            <div key={index} className="text-gray-600">
+              <h1>
+                {m[2]}: {m[4]}
+              </h1>
+            </div>
+          ))}
+          <p className="text-gray-600">Contact: {ratings ? ratings[7] : ""}</p>
+          <p className="text-gray-600">
+            Rating:
+            {ratings ? (
+              <span className="flex">
+                {Array(ratings[0])
+                  .fill()
+                  .map((_) => (
+                    <p>⭐</p>
+                  ))}
+              </span>
+            ) : (
+              ""
+            )}
+          </p>
+          <p className="text-gray-600">
+            MessTiming: {ratings ? ratings[6] : ""}
+          </p>
+          <p className="text-gray-600">
+            Address:{" "}
+            {`${ratings ? ratings[4] : ""},${ratings ? ratings[2] : ""},${
+              ratings ? ratings[10] : ""
+            }`}
+          </p>
         </div>
       ) : (
         <h1>No data is available</h1>

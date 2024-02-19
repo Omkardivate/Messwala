@@ -19,7 +19,9 @@ const Review = () => {
     }))
   }
 
-  const handleReview = async () => {
+  const handleReview = async (e) => {
+    e.preventDefault()
+
     await axios.post(`${MESSREVIEW}/${id}`, formData).then((response) => {
       if (response.data) {
         toast.success("Review add Successfully", {
@@ -32,6 +34,10 @@ const Review = () => {
           progress: undefined,
           theme: "colored",
           transition: Bounce,
+        })
+        setFormData({
+          messId: { messId: id },
+          reviews: "",
         })
       }
     })
@@ -49,6 +55,7 @@ const Review = () => {
               type="text"
               id="reviews"
               name="reviews"
+              pattern="^[A-Za-z\s]+$"
               placeholder="Good REviews only"
               value={formData.reviews}
               onChange={handleChange}

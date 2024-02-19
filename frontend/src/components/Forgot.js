@@ -110,6 +110,7 @@ const Forgot = () => {
               type="email"
               id="email"
               name="email"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -124,6 +125,7 @@ const Forgot = () => {
               type="password"
               id="password"
               name="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={formData.password}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -150,7 +152,7 @@ const Forgot = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="bg-secondary text-white px-6 py-2 rounded-md hover:bg-rear focus:outline-none focus:bg-rear"
             >
               Update
             </button>

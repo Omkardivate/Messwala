@@ -107,25 +107,6 @@ const Mess = () => {
               <DailyMenu />
             )}
           </div>
-
-          {/* <Link
-            to="/messplans"
-            className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
-          >
-            AddMessPlans
-          </Link>
-          <Link
-            to="/fixedmenu"
-            className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
-          >
-            AddMenu
-          </Link>
-          <Link
-            to="/dailymenu"
-            className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
-          >
-            AddDailyMenu
-          </Link> */}
         </div>
       </div>
       <div className="bg-yellow-200 w-2/5 mt-5 mb-5">
@@ -142,6 +123,7 @@ const Mess = () => {
                 type="text"
                 id="userName"
                 name="userName"
+                pattern="^[A-Za-z\s]+$"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -156,6 +138,7 @@ const Mess = () => {
                 type="email"
                 id="email"
                 name="email"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -170,6 +153,7 @@ const Mess = () => {
                 type="password"
                 id="password"
                 name="password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -185,6 +169,7 @@ const Mess = () => {
                 type="text"
                 id="messName"
                 name="messName"
+                pattern="^[A-Za-z\s]+$"
                 value={messName}
                 onChange={(e) => setMessName(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -199,6 +184,7 @@ const Mess = () => {
                 type="text"
                 id="messTime"
                 name="messTime"
+                pattern="^(1[0-2]|0?[1-9]) (AM|PM) to (1[0-2]|0?[1-9]) (AM|PM)$"
                 value={messTime}
                 onChange={(e) => setMessTime(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -214,6 +200,7 @@ const Mess = () => {
                 type="text"
                 id="city"
                 name="city"
+                pattern="^[A-Za-z\s]+$"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -228,6 +215,7 @@ const Mess = () => {
                 type="text"
                 id="state"
                 name="state"
+                pattern="^[A-Za-z\s]+$"
                 value={state}
                 onChange={(e) => setState(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -242,6 +230,7 @@ const Mess = () => {
                 type="text"
                 id="landmark"
                 name="landmark"
+                pattern="^[A-Za-z\s]+$"
                 value={landmark}
                 onChange={(e) => setLandMark(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -256,6 +245,7 @@ const Mess = () => {
                 type="text"
                 id="mobile"
                 name="mobile"
+                pattern="^\d{10}$"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

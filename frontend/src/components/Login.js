@@ -3,6 +3,7 @@ import { USER, MESS } from "../utils/constants"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { Bounce, toast } from "react-toastify"
+import ReCAPTCHA from "react-google-recaptcha"
 
 const Login = () => {
   let navigate = useNavigate()
@@ -11,6 +12,7 @@ const Login = () => {
     password: "",
     choice: "",
   })
+   const [capVal, setCapVal] = useState(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -120,6 +122,7 @@ const Login = () => {
               type="email"
               id="email"
               name="email"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -134,6 +137,7 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={formData.password}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -157,10 +161,19 @@ const Login = () => {
               <option value="mess">Mess</option>
             </select>
           </div>
-          <div className="text-center">
+          <div class="mt-3 ms-5 me-5 pt-4 ps-4">
+            <ReCAPTCHA
+              sitekey="6Ld2vjgpAAAAAB-cpCkxehmhmZpd-TCmevbbg4De"
+              onChange={(e) => {
+                setCapVal(e)
+              }}
+            ></ReCAPTCHA>
+          </div>
+
+          <div className="text-center mt-4">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="bg-secondary text-white px-6 py-2 rounded-md hover:bg-rear focus:outline-none focus:bg-rear"
             >
               Login
             </button>

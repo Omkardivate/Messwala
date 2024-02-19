@@ -52,8 +52,10 @@ const Contact = () => {
   return (
     <div className="w-full flex  justify-around items-center">
       <img src="./contact.svg" className="w-[600px] h-[600px] ml-10" />
-      <div className=" w-1/4 mx-auto mt-10 p-6 h-2/3 border rounded-lg shadow-lg bg-primary">
-        <h2 className="text-2xl font-bold mb-4 text-center">Contact Us</h2>
+      <div className=" w-2/5 mx-auto mt-10 p-6 h-3/4 border rounded-lg shadow-lg bg-primary">
+        <h2 className="text-2xl font-bold mb-4 text-center text-secondary">
+          Contact Us
+        </h2>
         <form onSubmit={handleSubmit} ref={form}>
           <div className="mb-4">
             <label htmlFor="name" className="block text-secondary font-medium">
@@ -63,6 +65,7 @@ const Contact = () => {
               type="text"
               id="name"
               name="user_name"
+              pattern="^[A-Za-z\s]+$"
               value={formData.user_name}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -77,6 +80,7 @@ const Contact = () => {
               type="email"
               id="email"
               name="user_email"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               value={formData.user_email}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -103,7 +107,7 @@ const Contact = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-secondary hover:bg-rear text-primary font-bold py-2 px-4 rounded"
             >
               Submit
             </button>

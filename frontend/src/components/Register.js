@@ -62,12 +62,12 @@ const Register = () => {
             theme: "colored",
             transition: Bounce,
           })
-          sessionStorage["userName"] = userName
-          sessionStorage["userId"] = userId
-          sessionStorage["email"] = email
-          sessionStorage["mobile"] = mobile
-          sessionStorage["password"] = password
-          sessionStorage["role"] = choice
+          // sessionStorage["userName"] = userName
+          // sessionStorage["userId"] = userId
+          // sessionStorage["email"] = email
+          // sessionStorage["mobile"] = mobile
+          // sessionStorage["password"] = password
+          // sessionStorage["role"] = choice
         } else {
           navigate("/register")
         }
@@ -104,12 +104,12 @@ const Register = () => {
             theme: "colored",
             transition: Bounce,
           })
-          sessionStorage["userName"] = userName
-          sessionStorage["userId"] = messId
-          sessionStorage["email"] = email
-          sessionStorage["mobile"] = mobile
-          sessionStorage["password"] = password
-          sessionStorage["role"] = choice
+          // sessionStorage["userName"] = userName
+          // sessionStorage["userId"] = messId
+          // sessionStorage["email"] = email
+          // sessionStorage["mobile"] = mobile
+          // sessionStorage["password"] = password
+          // sessionStorage["role"] = choice
         } else {
           navigate("/register")
         }
@@ -123,7 +123,7 @@ const Register = () => {
   return (
     <div className="flex  justify-around bg-primary w-full items-center min-h-screen">
       <img src="/registration.svg" className="h-[500px] w-[500px] shadow-md" />
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg mt-2 mb-2">
         <h2 className="text-2xl font-bold mb-6 text-center">
           Registration Form
         </h2>
@@ -136,6 +136,7 @@ const Register = () => {
               type="text"
               id="userName"
               name="userName"
+              pattern="^[A-Za-z\s]+$"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -151,6 +152,7 @@ const Register = () => {
               id="email"
               name="email"
               value={email}
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
@@ -164,6 +166,7 @@ const Register = () => {
               type="password"
               id="password"
               name="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -197,6 +200,7 @@ const Register = () => {
                   type="text"
                   id="messName"
                   name="messName"
+                  pattern="^[A-Za-z\s]+$"
                   value={messName}
                   onChange={(e) => setMessName(e.target.value)}
                   className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -211,6 +215,7 @@ const Register = () => {
                   type="text"
                   id="messTime"
                   name="messTime"
+                  pattern="^(1[0-2]|0?[1-9]) (AM|PM) to (1[0-2]|0?[1-9]) (AM|PM)$"
                   value={messTime}
                   onChange={(e) => setMessTime(e.target.value)}
                   className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -229,6 +234,7 @@ const Register = () => {
               type="text"
               id="city"
               name="city"
+              pattern="^[A-Za-z\s]+$"
               value={city}
               onChange={(e) => setCity(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -243,6 +249,7 @@ const Register = () => {
               type="text"
               id="state"
               name="state"
+              pattern="^[A-Za-z\s]+$"
               value={state}
               onChange={(e) => setState(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -257,6 +264,7 @@ const Register = () => {
               type="text"
               id="landmark"
               name="landmark"
+              pattern="^[A-Za-z\s]+$"
               value={landmark}
               onChange={(e) => setLandMark(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -271,6 +279,7 @@ const Register = () => {
               type="text"
               id="mobile"
               name="mobile"
+              pattern="^\d{10}$"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

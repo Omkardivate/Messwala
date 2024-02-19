@@ -18,22 +18,41 @@ const Rating = () => {
     }))
   }
 
-  const handleRating = async () => {
-    await axios.post(`${MESSRATING}/${id}`, formData).then((response) => {
-      if (response.data) {
-        toast.success("Rating add Successfully", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        })
-      }
-    })
+  const handleRating = async (e) => {
+    e.preventDefault()
+    if (formData.rating != 0) {
+      await axios.post(`${MESSRATING}/${id}`, formData).then((response) => {
+        if (response.data) {
+          toast.success("Rating add Successfully", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          })
+          setFormData({
+            messId: { messId: id },
+            rating: 0,
+          })
+        }
+      })
+    } else {
+      toast.warning("Add rating", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      })
+    }
   }
   return (
     <div className="max-w-md w-full h-1/2 p-6 bg-white rounded-lg shadow-lg">
@@ -47,6 +66,7 @@ const Rating = () => {
             type="text"
             id="rating"
             name="rating"
+            pattern="^[1-5]$"
             placeholder="1-5 rating only"
             value={formData.rating}
             onChange={handleChange}

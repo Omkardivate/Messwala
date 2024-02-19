@@ -24,9 +24,9 @@ const Home = () => {
   const handleSearch = () => {
     const data = mess.filter((m) => {
       return (
-        m.city.toLowerCase().includes(text.toLowerCase()) ||
-        m.landmark.toLowerCase().includes(text.toLowerCase()) ||
-        m.state.toLowerCase().includes(text.toLowerCase())
+        m.city.toLowerCase().includes(text.toLowerCase().trim()) ||
+        m.landmark.toLowerCase().includes(text.toLowerCase().trim()) ||
+        m.state.toLowerCase().includes(text.toLowerCase().trim())
       )
     })
 
@@ -35,14 +35,19 @@ const Home = () => {
 
   return (
     <div className="flex flex-col space-y-2 w-full p-5 mt-3">
-      <div>
+      <div className="flex items-center justify-center m-5 space-x-2">
         <input
           type="text"
-          className=" p-5 rounded-md "
+          className=" w-1/2 px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
           onChange={(e) => setText(e.target.value)}
           placeholder="search by location.."
         />
-        <button onClick={handleSearch}>Search</button>
+        <button
+          onClick={handleSearch}
+          className="px-4 py-2 bg-secondary text-primary rounded-md hover:bg-rear"
+        >
+          Search
+        </button>
       </div>
       <div className="max-w-[800px] h-1/2 mx-auto">
         <div className="w-full h-full">
@@ -57,7 +62,7 @@ const Home = () => {
                 to={"/mess/" + m.messId}
                 className="flex-grow"
               >
-                <MessCard messData={m} />
+                <MessCard key={m.messId} messData={m} />
               </Link>
             )
           })}
