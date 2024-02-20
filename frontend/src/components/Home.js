@@ -21,7 +21,8 @@ const Home = () => {
     setFilterMess(json)
   }
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault()
     const data = mess.filter((m) => {
       return (
         m.city.toLowerCase().includes(text.toLowerCase().trim()) ||
@@ -36,18 +37,24 @@ const Home = () => {
   return (
     <div className="flex flex-col space-y-2 w-full p-5 mt-3">
       <div className="flex items-center justify-center m-5 space-x-2">
-        <input
-          type="text"
-          className=" w-1/2 px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
-          onChange={(e) => setText(e.target.value)}
-          placeholder="search by location.."
-        />
-        <button
-          onClick={handleSearch}
-          className="px-4 py-2 bg-secondary text-primary rounded-md hover:bg-rear"
+        <form
+          onSubmit={handleSearch}
+          className="w-full flex justify-center space-x-2"
         >
-          Search
-        </button>
+          <input
+            type="text"
+            className=" w-1/2 px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
+            pattern="^[A-Za-z\s]+$"
+            onChange={(e) => setText(e.target.value)}
+            placeholder="search by location.."
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-secondary text-primary rounded-md hover:bg-rear"
+          >
+            Search
+          </button>
+        </form>
       </div>
       <div className="max-w-[800px] h-1/2 mx-auto">
         <div className="w-full h-full">

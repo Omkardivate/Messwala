@@ -6,7 +6,7 @@ const DailyMenu = () => {
   const [formData, setFormData] = useState({
     messId: { messId: sessionStorage["messId"] },
     dailymenuName: "",
-    dailyprice: "",
+    dailyprice: 0,
     availbility: "",
   })
 
@@ -20,6 +20,20 @@ const DailyMenu = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (formData.dailyprice <= 0) {
+      toast.warning("No zero or Negative Price", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      })
+      return
+    }
 
     await axios
       .post(`${DAILYMENU}/${sessionStorage["messId"]}`, formData)
@@ -28,7 +42,7 @@ const DailyMenu = () => {
           setFormData({
             messId: { messId: sessionStorage["messId"] },
             dailymenuName: "",
-            dailyprice: "",
+            dailyprice: 0,
             availbility: "",
           })
           toast.success("Daily Menu is Add", {
@@ -63,6 +77,7 @@ const DailyMenu = () => {
               type="text"
               id="dailymenuName"
               name="dailymenuName"
+              pattern="^[A-Za-z\s]+$"
               placeholder="Chicken"
               value={formData.dailymenuName}
               onChange={handleChange}
@@ -78,7 +93,8 @@ const DailyMenu = () => {
               type="text"
               id="availbility"
               name="availbility"
-              placeholder="11 PM To 10 PM"
+              pattern="^(1[0-2]|0?[1-9]) (AM|PM) to (1[0-2]|0?[1-9]) (AM|PM)$"
+              placeholder="11 PM to 10 PM"
               value={formData.availbility}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

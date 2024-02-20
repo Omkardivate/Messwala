@@ -20,6 +20,20 @@ const FixedMenu = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (formData.fixedprice <= 0) {
+      toast.warning("No zero or Negative Price", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      })
+      return
+    }
 
     await axios.post(`${FIXEDMENU}/`, formData).then((response) => {
       if (response.data) {
@@ -61,6 +75,7 @@ const FixedMenu = () => {
               type="text"
               id="fixedmenuName"
               name="fixedmenuName"
+              pattern="^[A-Za-z\s]+$"
               placeholder="Chicken"
               value={formData.fixedmenuName}
               onChange={handleChange}
@@ -78,6 +93,7 @@ const FixedMenu = () => {
               id="fixedprice"
               name="fixedprice"
               value={formData.fixedprice}
+              pattern="^[1-9][0-9]*$"
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required

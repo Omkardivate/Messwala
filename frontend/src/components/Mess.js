@@ -56,7 +56,7 @@ const Mess = () => {
     await axios
       .put(`${MESS}/${sessionStorage["messId"]}`, body)
       .then((response) => {
-        if (response.data === 200) {
+        if (response.data) {
           toast.success("Profile update Successfully", {
             position: "top-center",
             autoClose: 5000,

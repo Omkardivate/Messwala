@@ -12,7 +12,7 @@ const Login = () => {
     password: "",
     choice: "",
   })
-   const [capVal, setCapVal] = useState(null)
+  const [capVal, setCapVal] = useState(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target

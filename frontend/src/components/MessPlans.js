@@ -6,7 +6,7 @@ import { Bounce, toast } from "react-toastify"
 const MessPlans = () => {
   const [formData, setFormData] = useState({
     messPlan: "",
-    messPlanPrice: "",
+    messPlanPrice: 0,
   })
 
   const handleChange = (e) => {
@@ -20,13 +20,28 @@ const MessPlans = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    if (formData.messPlanPrice <= 0) {
+      toast.warning("No zero or negative", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      })
+      return
+    }
+
     await axios
       .put(`${MESS}/messplan/${sessionStorage["messId"]}`, formData)
       .then((response) => {
         if (response.data) {
           setFormData({
             messPlan: "",
-            messPlanPrice: "",
+            messPlanPrice: 0,
           })
           toast.success(" MessPlan is Added", {
             position: "top-center",
@@ -55,6 +70,7 @@ const MessPlans = () => {
               type="text"
               id="messPlan"
               name="messPlan"
+              pattern="^[A-Za-z\s]+$"
               value={formData.messPlan}
               onChange={handleChange}
               placeholder="Monthly mess plan"

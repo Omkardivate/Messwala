@@ -20,28 +20,9 @@ const Rating = () => {
 
   const handleRating = async (e) => {
     e.preventDefault()
-    if (formData.rating != 0) {
-      await axios.post(`${MESSRATING}/${id}`, formData).then((response) => {
-        if (response.data) {
-          toast.success("Rating add Successfully", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Bounce,
-          })
-          setFormData({
-            messId: { messId: id },
-            rating: 0,
-          })
-        }
-      })
-    } else {
-      toast.warning("Add rating", {
+
+    if (formData.rating <= 0 && formData.rating > 5) {
+      toast.warning("Rating should in 1-5 range", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -53,6 +34,26 @@ const Rating = () => {
         transition: Bounce,
       })
     }
+
+    await axios.post(`${MESSRATING}/${id}`, formData).then((response) => {
+      if (response.data) {
+        toast.success("Rating add Successfully", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        })
+        setFormData({
+          messId: { messId: id },
+          rating: 0,
+        })
+      }
+    })
   }
   return (
     <div className="max-w-md w-full h-1/2 p-6 bg-white rounded-lg shadow-lg">

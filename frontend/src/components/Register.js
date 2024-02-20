@@ -137,6 +137,7 @@ const Register = () => {
               id="userName"
               name="userName"
               pattern="^[A-Za-z\s]+$"
+              placeholder="eg.Kunal Hole"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -151,6 +152,7 @@ const Register = () => {
               type="email"
               id="email"
               name="email"
+              placeholder="eg.kunalhole@gmail.com"
               value={email}
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               onChange={(e) => setEmail(e.target.value)}
@@ -166,6 +168,7 @@ const Register = () => {
               type="password"
               id="password"
               name="password"
+              placeholder="eg.Kunal@123"
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -201,6 +204,7 @@ const Register = () => {
                   id="messName"
                   name="messName"
                   pattern="^[A-Za-z\s]+$"
+                  placeholder="city"
                   value={messName}
                   onChange={(e) => setMessName(e.target.value)}
                   className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -215,6 +219,7 @@ const Register = () => {
                   type="text"
                   id="messTime"
                   name="messTime"
+                  placeholder="10 AM to 10 PM"
                   pattern="^(1[0-2]|0?[1-9]) (AM|PM) to (1[0-2]|0?[1-9]) (AM|PM)$"
                   value={messTime}
                   onChange={(e) => setMessTime(e.target.value)}
@@ -234,6 +239,7 @@ const Register = () => {
               type="text"
               id="city"
               name="city"
+              placeholder="city.."
               pattern="^[A-Za-z\s]+$"
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -249,6 +255,7 @@ const Register = () => {
               type="text"
               id="state"
               name="state"
+              placeholder="state.."
               pattern="^[A-Za-z\s]+$"
               value={state}
               onChange={(e) => setState(e.target.value)}
@@ -264,6 +271,7 @@ const Register = () => {
               type="text"
               id="landmark"
               name="landmark"
+              placeholder="landmark.."
               pattern="^[A-Za-z\s]+$"
               value={landmark}
               onChange={(e) => setLandMark(e.target.value)}
@@ -280,6 +288,7 @@ const Register = () => {
               id="mobile"
               name="mobile"
               pattern="^\d{10}$"
+              placeholder="7666133811"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

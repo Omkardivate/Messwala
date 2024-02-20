@@ -155,7 +155,10 @@ const SingleMess = () => {
           </p>
         </div>
       ) : (
-        <h1>No data is available</h1>
+        <img
+          src="https://img.freepik.com/vetores-premium/emoticon-procurando-ilustracao-personagem_193274-118.jpg"
+          className="w-[200px] h-[200px]"
+        />
       )}
     </div>
   )
