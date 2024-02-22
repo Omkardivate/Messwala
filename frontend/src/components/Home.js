@@ -37,10 +37,7 @@ const Home = () => {
   return (
     <div className="flex flex-col space-y-2 w-full p-5 mt-3">
       <div className="flex items-center justify-center m-5 space-x-2">
-        <form
-          onSubmit={handleSearch}
-          className="w-full flex justify-center space-x-2"
-        >
+        <form onSubmit={handleSearch} className="w-full flex justify-center space-x-2" >
           <input
             type="text"
             className=" w-1/2 px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -70,6 +67,7 @@ const Home = () => {
                 className="flex-grow"
               >
                 <MessCard key={m.messId} messData={m} />
+                
               </Link>
             )
           })}

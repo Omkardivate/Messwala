@@ -17,24 +17,7 @@ const Register = () => {
   const [city, setCity] = useState("")
   const [landmark, setLandMark] = useState("")
   const [choice, setChoice] = useState("")
-  // const [formData, setFormData] = useState({
-  //   userName: "",
-  //   email: "",
-  //   password: "",
-  //   city: "",
-  //   state: "",
-  //   landmark: "",
-  //   mobile: "",
-  //   choice: "",
-  // })
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }))
-  // }
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -62,12 +45,8 @@ const Register = () => {
             theme: "colored",
             transition: Bounce,
           })
-          // sessionStorage["userName"] = userName
-          // sessionStorage["userId"] = userId
-          // sessionStorage["email"] = email
-          // sessionStorage["mobile"] = mobile
-          // sessionStorage["password"] = password
-          // sessionStorage["role"] = choice
+          
+          
         } else {
           navigate("/register")
         }
@@ -104,19 +83,13 @@ const Register = () => {
             theme: "colored",
             transition: Bounce,
           })
-          // sessionStorage["userName"] = userName
-          // sessionStorage["userId"] = messId
-          // sessionStorage["email"] = email
-          // sessionStorage["mobile"] = mobile
-          // sessionStorage["password"] = password
-          // sessionStorage["role"] = choice
+          
         } else {
           navigate("/register")
         }
         navigate("/login")
       })
     }
-
     // Send the form data to your server or process it as needed
   }
 

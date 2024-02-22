@@ -19,28 +19,6 @@ const SingleMess = () => {
     fetchMessData()
   }, [])
 
-  // //rating handler
-  // const handleRating = async () => {
-  //   const body = {
-  //     messId,
-  //     rating,
-  //   }
-  //   await axios.post(`${MESSRATING}/${id}`, body).then((response) => {
-  //     if (response.data != null) {
-  //       toast.success("Rating add Successfully", {
-  //         position: "top-center",
-  //         autoClose: 5000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: "colored",
-  //         transition: Bounce,
-  //       })
-  //     }
-  //   })
-  // }
 
   const fetchMessData = async () => {
     await axios.get(`${GETSINGLEMESS}/${id}`).then((response) => {
@@ -81,58 +59,18 @@ const SingleMess = () => {
       </div>
 
       {mess.length != 0 ? (
-        // <div className="bg-white flex flex-col  justify-center w-2/5  rounded-lg p-5 shadow-lg space-y-3">
-        //   <h1 className="text-xl font-semibold items-center">
-        //     {ratings ? ratings[5] : ""}
-        //   </h1>
-        //   <h1>OwnerName: {ratings ? ratings[11] : ""}</h1>
-        //   <p>DailyMenu: {mess[0][1]}</p>
-        //   <p>DailyMenuPrice: {mess[0][3]}</p>
-        //   <p>DailyMenuTime: {mess[0][0]}</p>
-        //   <p>Menu</p>
-        //   {mess.map((m) => {
-        //     return (
-        //       <div>
-        //         <h1>
-        //           {m[2]}: {m[4]}
-        //         </h1>
-        //         {/* <h1>Price: {m[4]}</h1> */}
-        //       </div>
-        //     )
-        //   })}
-        //   <p>Contact: {ratings ? ratings[7] : ""}</p>
-        //   <p>Rating:{ratings ? ratings[0] : ""} </p>
-        //   <p>MessTiming: {ratings ? ratings[6] : ""}</p>
-        //   <p>
-        //     Address:{" "}
-        //     {`${ratings ? ratings[4] : ""},${ratings ? ratings[2] : ""},${
-        //       ratings ? ratings[10] : ""
-        //     }`}
-        //   </p>
-        // </div>
 
         <div className="bg-white flex flex-col justify-center w-2/5 rounded-lg p-5 shadow-lg space-y-3">
           <h1 className="text-2xl font-bold text-center text-gray-800">
-            {ratings ? ratings[5] : ""}
+            {ratings ? ratings[5] : ""}  {/* for rating  */}
           </h1>
           <h1 className="text-lg font-semibold text-gray-700">
-            OwnerName: {ratings ? ratings[11] : ""}
+            OwnerName: {ratings ? ratings[13] : ""}  {/*  */}
           </h1>
-          <p className="text-gray-600">DailyMenu: {mess[0][1]}</p>
-          <p className="text-gray-600">DailyMenuPrice: {mess[0][3]}</p>
-          <p className="text-gray-600">DailyMenuTime: {mess[0][0]}</p>
-          <p className="text-gray-600">Menu</p>
-          {mess.map((m, index) => (
-            <div key={index} className="text-gray-600">
-              <h1>
-                {m[2]}: {m[4]}
-              </h1>
-            </div>
-          ))}
-          <p className="text-gray-600">Contact: {ratings ? ratings[7] : ""}</p>
-          <p className="text-gray-600">
-            Rating:
-            {ratings ? (
+          <p className="text-gray-600">Contact: {ratings ? ratings[9] : ""}</p>  {/*  */}
+          <p className="text-gray-600 flex">
+            Rating:         
+            {ratings ? (                   
               <span className="flex">
                 {Array(ratings[0])
                   .fill()
@@ -145,14 +83,35 @@ const SingleMess = () => {
             )}
           </p>
           <p className="text-gray-600">
-            MessTiming: {ratings ? ratings[6] : ""}
+            MessTiming:  {ratings[8] }   {/*  */}
           </p>
           <p className="text-gray-600">
-            Address:{" "}
+            Address:{" "}              {/*  */}
             {`${ratings ? ratings[4] : ""},${ratings ? ratings[2] : ""},${
-              ratings ? ratings[10] : ""
+              ratings ? ratings[12] : ""
             }`}
           </p>
+          <hr/>
+          <p className="text-gray-600">DailyMenu: {mess[0][1]}</p>   {/*  */}
+          <p className="text-gray-600">DailyMenuPrice: {mess[0][3]}</p>  {/*  */}
+          <p className="text-gray-600">DailyMenuTime: {mess[0][0]}</p>  {/*  */}
+          <hr />
+          <div className="bg-green-50 py-4">
+            <p className="text-gray-600 text-center font-bold mb-2">Menucard</p>
+            {mess.map((m, index) => (
+              <div key={index} className="text-gray-600">
+                <table className="bg-green-200 lg:ml-20 ">
+                  <tbody >
+                    <tr >
+                      <td className="md:w-64 h-8 w-32 border text-center"> <h1>{m[2]}</h1> </td>
+                      <td className=" h-8 w-20 border text-center"> <h1>{m[4]}</h1> </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          ))}
+          </div>
+          
         </div>
       ) : (
         <img

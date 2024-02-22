@@ -20,8 +20,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
         publicKey: EMAIL_PUBLIC_KEY,
       })
       .then(
