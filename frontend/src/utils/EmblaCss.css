@@ -16,5 +16,6 @@
 .embla_slide img {
   width: 70%;
   height: 500px;
+  /* object-fit: cover; */
   border-radius: 10px;
 }

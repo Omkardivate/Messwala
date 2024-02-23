@@ -6,6 +6,7 @@ import { Bounce, toast } from "react-toastify"
 import DailyMenu from "./DailyMenu"
 import FixedMenu from "./FixedMenu"
 import MessPlans from "./MessPlans"
+import Status from "./Status"
 
 const Mess = () => {
   const param = useParams()
@@ -95,6 +96,12 @@ const Mess = () => {
             >
               AddDailyMenu
             </button>
+            <button
+              onClick={() => setStatus("messstatus")}
+              className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
+            >
+              MessStatus
+            </button>
           </div>
           <div>
             {status === "dailyMenu" ? (
@@ -103,6 +110,8 @@ const Mess = () => {
               <FixedMenu />
             ) : status == "messplan" ? (
               <MessPlans />
+            ) : status === "messstatus" ? (
+              <Status />
             ) : (
               <DailyMenu />
             )}

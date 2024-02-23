@@ -7,21 +7,30 @@ const Footer = () => {
         <p className="font-medium">@MessWala Pvt.Ltd.</p>
       </div>
       <div className="flex space-x-4">
-        <img
-          title="MessWala Github"
-          src="/github.svg"
-          className="w-[40px] h-[40px] cursor-pointer"
-        />
-        <img
-          title="MessWala LinkedIn"
-          src="/linkedIn.svg"
-          className="w-[40px] h-[40px] cursor-pointer"
-        />
-        <img
-          title="MessWala Instagram"
-          src="/instagram.svg"
-          className="w-[40px] h-[40px] cursor-pointer"
-        />
+        <a href="https://github.com/Omkardivate/Messwala" target="_blank">
+          <img
+            title="MessWala Github"
+            src="/github.svg"
+            className="w-[40px] h-[40px] cursor-pointer"
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/kunal-hole-3a9459189/"
+          target="_blank"
+        >
+          <img
+            title="MessWala LinkedIn"
+            src="/linkedIn.svg"
+            className="w-[40px] h-[40px] cursor-pointer"
+          />
+        </a>
+        <a href="https://instagram.com/_kunal_hole_" target="_blank">
+          <img
+            title="MessWala Instagram"
+            src="/instagram.svg"
+            className="w-[40px] h-[40px] cursor-pointer"
+          />
+        </a>
       </div>
     </div>
   )
