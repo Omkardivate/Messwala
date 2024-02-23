@@ -26,7 +26,6 @@ const MessReviews = () => {
           className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shadow-md p-4"
         >
           <p className="text-lg text-white font-semibold">{r.reviews}</p>
-          {/* Add additional information or details if needed */}
         </div>
       ))}
     </div>
