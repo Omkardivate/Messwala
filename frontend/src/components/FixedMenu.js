@@ -32,7 +32,7 @@ const FixedMenu = () => {
         theme: "colored",
         transition: Bounce,
       })
-      return
+      //return
     }
 
     await axios.post(`${FIXEDMENU}/`, formData).then((response) => {
