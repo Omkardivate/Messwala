@@ -12,14 +12,13 @@ import MessReviews from "./MessReviews"
 const SingleMess = () => {
   const { id } = useParams()
   const [mess, setMess] = useState([])
-  const [ratings, setRatings] = useState([])
-
-  const [reviews, setReviews] = useState("")
   const [status, setStatus] = useState("rating")
-  const [rating, setRating] = useState()
-  const [messId, setMessId] = useState({ messId: sessionStorage["messId"] })
-
   const [string, setString] = useState("details")
+  
+  // const [ratings, setRatings] = useState([])
+  // const [reviews, setReviews] = useState("")
+  // const [rating, setRating] = useState()
+  // const [messId, setMessId] = useState({ messId: sessionStorage["messId"] })
 
   useEffect(() => {
     fetchMessData()
