@@ -22,9 +22,12 @@ const Forgot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(formData.choice)
-
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
     if (formData.choice === "user") {
-      await axios.put(`${USER}/forgot`, formData).then((response) => {
+      await axios.put(`${USER}/forgot`, formData, {headers:headers}).then((response) => {
         const data = response.data
         console.log(data)
         const { userName, userId } = data
@@ -60,7 +63,7 @@ const Forgot = () => {
         }
       })
     } else {
-      await axios.put(`${MESS}/forgot/`, formData).then((response) => {
+      await axios.put(`${MESS}/forgot/`, formData, {headers:headers}).then((response) => {
         const data = response.data
         console.log(data)
         const { messId, userName } = data
@@ -125,6 +128,7 @@ const Forgot = () => {
               type="password"
               id="password"
               name="password"
+              title="Password must contain atleast one capital letter,small letter,number and special symbol"
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={formData.password}
               onChange={handleChange}

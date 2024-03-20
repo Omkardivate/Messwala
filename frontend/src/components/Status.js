@@ -19,8 +19,11 @@ const Status = () => {
 
   const handleStatus = async (e) => {
     e.preventDefault()
-
-    await axios.post(`${MESS}/addstatus`, formData).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.post(`${MESS}/addstatus`, formData,{headers:headers}).then((response) => {
       if (response.data) {
         toast.success("Status Update Successfully", {
           position: "top-center",

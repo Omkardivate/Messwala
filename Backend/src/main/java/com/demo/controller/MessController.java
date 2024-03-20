@@ -2,10 +2,8 @@ package com.demo.controller;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.models.Mess;
-import com.demo.models.MessRating;
 import com.demo.service.MessServiceImpl;
 
 @RestController
@@ -28,16 +24,10 @@ public class MessController {
 	@Autowired
 	private MessServiceImpl messService;
 	
-	
-	
 	@GetMapping("/")
 	public ResponseEntity<?> getAllMess(){
-		
 		List<Mess> m=messService.getAllMess();
-		
 		return ResponseEntity.ok(m);
-		
-		
 	}
 	
 	
@@ -49,7 +39,6 @@ public class MessController {
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.ok(m1);
-		
 	}
 	
 	
@@ -59,7 +48,6 @@ public class MessController {
 		if(m1==null) {
 			 return ResponseEntity.noContent().build();
 		}
-		
 		return ResponseEntity.ok(m1);
 	}
 	
@@ -67,13 +55,10 @@ public class MessController {
 	public ResponseEntity<?> getMessById(@PathVariable int id){
 		
 		Mess m=messService.getMessById(id);
-		
 		if(m==null) {
 			return ResponseEntity.noContent().build();
 		}
-		
 		return ResponseEntity.ok(m);
-		
 	}
 	
 	@PutMapping("/{id}")
@@ -85,28 +70,24 @@ public class MessController {
 		}
 		return ResponseEntity.noContent().build();
 	}
+	
 	@GetMapping("/getonemess/{id}")
 	public ResponseEntity<?> getOne(@PathVariable int id){
 		
 		List<Object> m=messService.getParticularMess(id);
-		
 		if(m==null) {
 			return ResponseEntity.noContent().build();
 		}
-		
 		return ResponseEntity.ok(m);
-		
 	}
+	
 	@PutMapping("/messplan/{id}")
 	public ResponseEntity<?> updateMessPlans(@RequestBody Mess m,@PathVariable int id){
 	   int n=messService.updateMessPlans(m.getMessPlan(),m.getMessPlanPrice(),id);
 		if(n!=0) {
 			return ResponseEntity.ok(n);
 		}
-		
 		return ResponseEntity.noContent().build();
-				
-		
 	}
 	
 	@PutMapping("/forgot")
@@ -117,9 +98,7 @@ public class MessController {
 			messService.forgotPassword(m.getPassword(),m.getEmail());
 			return ResponseEntity.ok(1);
 		}
-		
 		return ResponseEntity.noContent().build();
-		
 	}
 	
 }

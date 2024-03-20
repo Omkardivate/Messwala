@@ -35,8 +35,11 @@ const MessPlans = () => {
       return
     }
 
-    await axios
-      .put(`${MESS}/messplan/${sessionStorage["messId"]}`, formData)
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.put(`${MESS}/messplan/${sessionStorage["messId"]}`, formData, {headers:headers})
       .then((response) => {
         if (response.data) {
           setFormData({

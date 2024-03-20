@@ -20,14 +20,20 @@ const Mess = () => {
   const [state, setState] = useState("")
   const [password, setPassword] = useState("")
 
-  const [status, setStatus] = useState("dailymenu")
+  const [opstatus, setOpStatus] = useState("dailymenu")
+  const [choice,setChoice]= useState("")
+  const [status,setStatus]= useState("")
 
   useEffect(() => {
     fetchMess()
   }, [])
 
   const fetchMess = async () => {
-    await axios.get(`${MESS}/${sessionStorage["messId"]}`).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.get(`${MESS}/${sessionStorage["messId"]}`,{headers:headers}).then((response) => {
       const data = response.data
 
       setUserName(data.userName)
@@ -39,10 +45,16 @@ const Mess = () => {
       setMobile(data.mobile)
       setState(data.state)
       setPassword(data.password)
+      setChoice(data.choice)
+      setStatus(data.status)
     })
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
     const body = {
       userName,
       city,
@@ -53,9 +65,10 @@ const Mess = () => {
       mobile,
       state,
       password,
+      choice,
+      status
     }
-    await axios
-      .put(`${MESS}/${sessionStorage["messId"]}`, body)
+    await axios.put(`${MESS}/${sessionStorage["messId"]}`, body, {headers:headers})
       .then((response) => {
         if (response.data) {
           toast.success("Profile update Successfully", {
@@ -78,40 +91,33 @@ const Mess = () => {
         <div className=" flex flex-col items-center space-y-[100px] mt-[200px]">
           <div className="flex space-x-5">
             <button
-              onClick={() => setStatus("messplan")}
+              onClick={() => setOpStatus("messplan")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
             >
               AddMessPlan
             </button>
 
             <button
-              onClick={() => setStatus("messcard")}
+              onClick={() => setOpStatus("messcard")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
             >
               AddMenuCardMenu
             </button>
             <button
-              onClick={() => setStatus("dailymenu")}
+              onClick={() => setOpStatus("dailymenu")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
             >
               AddDailyMenu
             </button>
-            <button
-              onClick={() => setStatus("messstatus")}
-              className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
-            >
-              MessStatus
-            </button>
+            
           </div>
           <div>
-            {status === "dailyMenu" ? (
+            {opstatus === "dailyMenu" ? (
               <DailyMenu />
-            ) : status === "messcard" ? (
+            ) : opstatus === "messcard" ? (
               <FixedMenu />
-            ) : status == "messplan" ? (
+            ) : opstatus == "messplan" ? (
               <MessPlans />
-            ) : status === "messstatus" ? (
-              <Status />
             ) : (
               <DailyMenu />
             )}
@@ -123,8 +129,29 @@ const Mess = () => {
           <h2 className="text-2xl font-bold mb-6 text-center">
             👤{userName}👤
           </h2>
+          
+              
+          
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
+            <div className="mb-3" >
+                <label className="block font-semibold mb-1">
+                  Status:
+                </label>
+                {console.log(status)}
+                { status === "open" ? (
+                  <>
+                    <input type="radio" name="status" id="open" defaultChecked onClick={(e) => setStatus(e.target.id)}/> <label htmlFor="open">Open</label>
+                    <input type="radio" name="status" id="close" className="ml-8" onClick={(e) => setStatus(e.target.id)} /> <label htmlFor="close">Closed</label>
+                  </>
+                ) : (
+                  <>
+                    <input type="radio" name="status" id="open" onClick={(e) => setStatus(e.target.id)}/> <label htmlFor="open">Open</label>
+                    <input type="radio" name="status" id="close" className="ml-8" defaultChecked onClick={(e) => setStatus(e.target.id)}/> <label htmlFor="close">Closed</label>
+                  </>
+                )}
+            </div>
+
               <label htmlFor="username" className="block font-semibold mb-1">
                 Username
               </label>

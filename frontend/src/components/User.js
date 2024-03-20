@@ -13,7 +13,12 @@ const User = ({ userId }) => {
   }, [])
 
   const fetchUser = async () => {
-    await axios.get(`${USER}/${userId}`).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+
+    await axios.get(`${USER}/${userId}`, {headers :headers}).then((response) => {
       const { email, mobile, password, userName } = response.data
       setEmail(email)
       setMobile(mobile)
@@ -23,6 +28,10 @@ const User = ({ userId }) => {
   }
 
   const handleSubmit = async (e) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage['token']}`
+    };
     e.preventDefault()
     const body = {
       userName,
@@ -32,9 +41,9 @@ const User = ({ userId }) => {
       mobile,
 
       password,
+      
     }
-    await axios
-      .put(`${USER}/${sessionStorage["userId"]}`, body)
+    await axios.put(`${USER}/${sessionStorage["userId"]}`, body, {headers:headers})
       .then((response) => {
         if (response.data) {
           toast.success("Profile update Successfully", {
@@ -49,7 +58,7 @@ const User = ({ userId }) => {
             transition: Bounce,
           })
         }
-      })
+      }).catch(()=>{console.log("not getting")})
   }
 
   return (

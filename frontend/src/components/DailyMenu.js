@@ -35,8 +35,11 @@ const DailyMenu = () => {
       return
     }
 
-    await axios
-      .post(`${DAILYMENU}/${sessionStorage["messId"]}`, formData)
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.post(`${DAILYMENU}/${sessionStorage["messId"]}`, formData , {headers:headers})
       .then((response) => {
         if (response.data) {
           setFormData({

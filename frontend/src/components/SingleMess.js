@@ -12,20 +12,25 @@ import MessReviews from "./MessReviews"
 const SingleMess = () => {
   const { id } = useParams()
   const [mess, setMess] = useState([])
+  const [ratings, setRatings] = useState([])
+
+  const [reviews, setReviews] = useState("")
   const [status, setStatus] = useState("rating")
+  const [rating, setRating] = useState()
+  const [messId, setMessId] = useState({ messId: sessionStorage["messId"] })
+
   const [string, setString] = useState("details")
-  
-  // const [ratings, setRatings] = useState([])
-  // const [reviews, setReviews] = useState("")
-  // const [rating, setRating] = useState()
-  // const [messId, setMessId] = useState({ messId: sessionStorage["messId"] })
 
   useEffect(() => {
     fetchMessData()
   }, [])
 
   const fetchMessData = async () => {
-    await axios.get(`${GETSINGLEMESS}/${id}`).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.get(`${GETSINGLEMESS}/${id}`, {headers:headers}).then((response) => {
       console.log(response.data)
       setMess(response.data)
     })

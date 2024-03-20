@@ -1,7 +1,5 @@
 package com.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,26 +24,14 @@ public class MessRatingController {
 	
 	@PostMapping("/{id}")
 	public ResponseEntity<?> addMessRating(@RequestBody MessRating m,@PathVariable int id){
-		
 		MessRating mr1=ms.addMessRating(m, id);
-		
-		return ResponseEntity.ok(mr1);
-		
-		
-		
-		
-	}@GetMapping("/{id}")
-	public ResponseEntity<?> getRating(@PathVariable int id){
-		
-		 Object messRating=ms.getMessRating(id);
-		
-		return ResponseEntity.ok(messRating);
-		
-		
-		
-		
+		return ResponseEntity.ok(mr1);	
 	}
-
 	
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getRating(@PathVariable int id){
+		Object messRating=ms.getMessRating(id);
+		return ResponseEntity.ok(messRating);
+	}
 }

@@ -2,6 +2,7 @@ package com.demo.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,6 +39,10 @@ public class Mess {
 	private String landmark;
 	private String messPlan;
 	private double messPlanPrice;
+	private String choice;
+	private String status;
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Set<Role> roles;
 	
 	public Mess() {
 		super();
@@ -44,7 +50,7 @@ public class Mess {
 
 	public Mess(int messId, String email, String messName, String userName, String password, String mobile,
 			float rating, String messTime, String state, String city, String landmark, String messPlan,
-			double messPlanPrice) {
+			double messPlanPrice,String choice,String status) {
 		super();
 		this.messId = messId;
 		this.email = email;
@@ -59,6 +65,34 @@ public class Mess {
 		this.landmark = landmark;
 		this.messPlan = messPlan;
 		this.messPlanPrice = messPlanPrice;
+		this.choice=choice;
+		this.status=status;
+	}
+	
+	
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public String getStatus() {
+		return status;
+	} 
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getChoice() {
+		return choice;
+	}
+
+	public void setChoice(String choice) {
+		this.choice = choice;
 	}
 
 	public int getMessId() {
@@ -171,26 +205,5 @@ public class Mess {
 				+ ", password=" + password + ", mobile=" + mobile + ", rating=" + rating + ", messTime=" + messTime
 				+ ", state=" + state + ", city=" + city + ", landmark=" + landmark + ", messPlan=" + messPlan
 				+ ", messPlanPrice=" + messPlanPrice + "]";
-	}
-	
-	
-	
-	
-	
-
-	
-
-
-	
- 
-	
-
-
-
-
-
-	
-	
-	
-	
+	}	
 }

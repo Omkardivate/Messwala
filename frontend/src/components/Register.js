@@ -16,25 +16,7 @@ const Register = () => {
   const [state, setState] = useState("")
   const [city, setCity] = useState("")
   const [landmark, setLandMark] = useState("")
-  const [choice, setChoice] = useState("")
-  // const [formData, setFormData] = useState({
-  //   userName: "",
-  //   email: "",
-  //   password: "",
-  //   city: "",
-  //   state: "",
-  //   landmark: "",
-  //   mobile: "",
-  //   choice: "",
-  // })
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }))
-  // }
+  const [choice, setChoice] = useState("user")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -45,6 +27,7 @@ const Register = () => {
         password,
         mobile,
         email,
+        choice
       }
       axios.post(`${USER}/registration`, body).then((response) => {
         const resData = response.data
@@ -62,12 +45,7 @@ const Register = () => {
             theme: "colored",
             transition: Bounce,
           })
-          // sessionStorage["userName"] = userName
-          // sessionStorage["userId"] = userId
-          // sessionStorage["email"] = email
-          // sessionStorage["mobile"] = mobile
-          // sessionStorage["password"] = password
-          // sessionStorage["role"] = choice
+
         } else {
           navigate("/register")
         }
@@ -87,6 +65,7 @@ const Register = () => {
         state,
         city,
         landmark,
+        choice
       }
       axios.post(`${MESS}/registration`, body).then((response) => {
         const resData = response.data
@@ -104,12 +83,7 @@ const Register = () => {
             theme: "colored",
             transition: Bounce,
           })
-          // sessionStorage["userName"] = userName
-          // sessionStorage["userId"] = messId
-          // sessionStorage["email"] = email
-          // sessionStorage["mobile"] = mobile
-          // sessionStorage["password"] = password
-          // sessionStorage["role"] = choice
+          
         } else {
           navigate("/register")
         }
@@ -137,7 +111,9 @@ const Register = () => {
               id="userName"
               name="userName"
               pattern="^[A-Za-z\s]+$"
-              placeholder="eg.Kunal Hole"
+              title="Only letters are allowed"
+              
+              placeholder="eg.Karan Bhagvant"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -152,7 +128,7 @@ const Register = () => {
               type="email"
               id="email"
               name="email"
-              placeholder="eg.kunalhole@gmail.com"
+              placeholder="eg.karanbhagvant@gmail.com"
               value={email}
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               onChange={(e) => setEmail(e.target.value)}
@@ -168,7 +144,8 @@ const Register = () => {
               type="password"
               id="password"
               name="password"
-              placeholder="eg.Kunal@123"
+              placeholder="eg.Karan@123"
+              title="Password must contain atleast one capital letter,small letter,number and special symbol"
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -188,8 +165,7 @@ const Register = () => {
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
               required
             >
-              <option value="">Select One</option>
-              <option value="user">User</option>
+              <option value="user" checked >User</option>
               <option value="mess">Mess</option>
             </select>
           </div>
@@ -205,6 +181,7 @@ const Register = () => {
                   name="messName"
                   pattern="^[A-Za-z\s]+$"
                   placeholder="city"
+                  title="Only letters are allowed"
                   value={messName}
                   onChange={(e) => setMessName(e.target.value)}
                   className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -220,7 +197,8 @@ const Register = () => {
                   id="messTime"
                   name="messTime"
                   placeholder="10 AM to 10 PM"
-                  pattern="^(1[0-2]|0?[1-9]) (AM|PM) to (1[0-2]|0?[1-9]) (AM|PM)$"
+                  title="time should be in between 1-12"
+                  pattern="^(1[0-2]|0?[1-9]) (AM|PM|am|pm) (to|:|-) (1[0-2]|0?[1-9]) (AM|PM|am|pm)$"
                   value={messTime}
                   onChange={(e) => setMessTime(e.target.value)}
                   className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

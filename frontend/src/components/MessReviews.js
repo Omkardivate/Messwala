@@ -12,7 +12,11 @@ const MessReviews = () => {
   }, [])
 
   const fetchData = async () => {
-    const data = await axios.get(`${MESSREVIEW}/${id}`).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    const data = await axios.get(`${MESSREVIEW}/${id}`,{headers:headers}).then((response) => {
       console.log(response.data)
       setReview(response.data)
     })

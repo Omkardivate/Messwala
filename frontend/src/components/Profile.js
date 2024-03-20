@@ -10,15 +10,17 @@ const Profile = () => {
   }, [])
 
   const fetchData = async () => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
     if (sessionStorage["choice"] == "user") {
-      await axios
-        .get(`${USER}/${sessionStorage["userId"]}`)
+      await axios.get(`${USER}/${sessionStorage["userId"]}`, {headers:headers})
         .then((response) => {
           console.log(response.data)
         })
     } else {
-      await axios
-        .get(`${MESS}/${sessionStorage["messId"]}`)
+      await axios.get(`${MESS}/${sessionStorage["messId"]}`, {headers:headers} )
         .then((response) => {
           console.log(response.data)
         })

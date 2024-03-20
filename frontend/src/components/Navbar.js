@@ -7,6 +7,7 @@ const Navbar = () => {
   useEffect(() => {
     setLogin(true)
   }, [])
+
   const logOut = () => {
     sessionStorage.clear()
     setLogin(false)
@@ -23,6 +24,7 @@ const Navbar = () => {
     })
     navigate("/")
   }
+
   return (
     <div className="sticky z-[100] w-full bg-secondary h-20 flex justify-between items-center p-5">
       <Link to="/">
@@ -40,6 +42,7 @@ const Navbar = () => {
           <Link to="/contact">
             <li className="ml-10 uppercase  hover:border-b-rear">Contact</li>
           </Link>
+          
           {sessionStorage["userName"] || sessionStorage["email"] ? (
             " "
           ) : (

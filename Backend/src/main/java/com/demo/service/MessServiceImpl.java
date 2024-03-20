@@ -3,85 +3,83 @@ package com.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.demo.dao.MessDao;
 import com.demo.models.Mess;
-import com.demo.models.MessRating;
 
 @Service
 public class MessServiceImpl implements MessService {
 
 	@Autowired
-	
 	private MessDao messDao;
+	
+//	@Autowired
+//    private PasswordEncoder passwordEncoder;
 	
 	@Override
 	public Mess addMess(Mess m) {
 		
 		Mess m1=messDao.getByEmail(m.getEmail());
-		
 		if(m1==null) {
+//			String encodedPassword = passwordEncoder.encode(m.getPassword());
+//			m.setPassword(encodedPassword);
 			messDao.save(m);
 			return m;
 		}
-		
-		
 		return null;
 	}
 
 	@Override
 	public Mess validate(Mess m) {
-		
-		
-		
-		return messDao.getMess(m.getEmail(), m.getPassword());
+		Mess existingMess = messDao.getByEmail(m.getEmail());
+//        if (existingMess != null && passwordEncoder.matches(m.getPassword(), existingMess.getPassword())) {
+//            return existingMess;
+//        }
+//        return null;
+        return existingMess;
 	}
      
 	public Mess getMessByEmail(String email) {
 		return messDao.getByEmail(email);
 	}
 	
-	
 	@Override
 	public List<Mess> getAllMess() {
-		
 		return messDao.getAllMess();
 	}
 
 	@Override
 	public Mess getMessById(int id) {
-		
 		Mess m=messDao.getMessById(id);
-		
 		return m;
 	}
 
 	@Override
 	public Mess updateMess(int id,Mess m) {
 		
-	Mess mess=messDao.getMessById(id);
-	
-	if(mess!=null) {
-	    mess.setCity(m.getCity());
-	    mess.setEmail(m.getEmail());
-	    mess.setLandmark(m.getLandmark());
-	    mess.setMessName(m.getMessName());
-	    mess.setMessTime(m.getMessTime());
-	    mess.setMobile(m.getMobile());
-	    mess.setUserName(m.getUserName());
-	    mess.setPassword(m.getPassword());
-	    mess.setRating(m.getRating());
-	    mess.setState(m.getState());
-	    return messDao.save(mess);
-	    
-	}
-	
-	return null;
+		Mess mess=messDao.getMessById(id);
+		if(mess!=null) {
+//			String encodedPassword = passwordEncoder.encode(m.getPassword());
+//			mess.setPassword(encodedPassword);
+		    mess.setCity(m.getCity());
+		    mess.setEmail(m.getEmail());
+		    mess.setLandmark(m.getLandmark());
+		    mess.setMessName(m.getMessName());
+		    mess.setMessTime(m.getMessTime());
+		    mess.setMobile(m.getMobile());
+		    mess.setUserName(m.getUserName());
+		    mess.setPassword(m.getPassword());
+		    mess.setRating(m.getRating());
+		    mess.setState(m.getState());
+		    mess.setChoice(m.getChoice());
+		    mess.setStatus(m.getStatus());
+		    return messDao.save(mess);   
+		}
+		return null;
 	}
 
 	public List<Object> getParticularMess(int id) {
-		// TODO Auto-generated method stub
 		return messDao.getOneMess(id);
 	}
 
@@ -97,10 +95,8 @@ public class MessServiceImpl implements MessService {
 
 	@Override
 	public int forgotPassword(String password, String email) {
-		
+//		String encodedPassword = passwordEncoder.encode(password);
+//		return messDao.forgotPassword(encodedPassword,email);
 		return messDao.forgotPassword(password,email);
 	}
-
-	
-
 }

@@ -21,8 +21,11 @@ const Review = () => {
 
   const handleReview = async (e) => {
     e.preventDefault()
-
-    await axios.post(`${MESSREVIEW}/${id}`, formData).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.post(`${MESSREVIEW}/${id}`, formData , {headers:headers}).then((response) => {
       if (response.data) {
         toast.success("Review add Successfully", {
           position: "top-center",

@@ -12,7 +12,11 @@ const MenuCard = () => {
   }, [])
 
   const fetchData = async () => {
-    await axios.get(`${GETSINGLEMESS}/${id}`).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.get(`${GETSINGLEMESS}/${id}`,{headers:headers}).then((response) => {
       console.log(response?.data)
       setMenu(response.data)
     })

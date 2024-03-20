@@ -21,12 +21,15 @@ import ProtectedRoute from "./components/ProtectedRoute"
 function App() {
   return (
     <div className="bg-primary min-h-screen w-full flex flex-col">
+
       <Navbar />
+
       <div className=" flex flex-1 h-full overflow-y-scroll">
         <Outlet />
       </div>
 
       <Footer />
+      
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -115,4 +118,3 @@ export const appRouter = createBrowserRouter([
   },
 ])
 
-export default App

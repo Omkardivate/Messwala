@@ -6,7 +6,7 @@ const ProtectedRoute = ({ element, allowedRoles }) => {
   const [role, setRole] = useState("")
 
   useEffect(() => {
-    const userRole = sessionStorage.getItem("choice")
+    const userRole = sessionStorage.getItem("choice")  //mess,user
     if (!userRole || !allowedRoles.includes(userRole)) {
       navigate("/login") // Redirect to login if role not found or not allowed
     } else {

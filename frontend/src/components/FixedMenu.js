@@ -35,7 +35,11 @@ const FixedMenu = () => {
       return
     }
 
-    await axios.post(`${FIXEDMENU}/`, formData).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.post(`${FIXEDMENU}/`, formData, {headers:headers}).then((response) => {
       if (response.data) {
         setFormData({
           mess: { messId: sessionStorage["messId"] },

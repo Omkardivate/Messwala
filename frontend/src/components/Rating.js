@@ -34,8 +34,11 @@ const Rating = () => {
         transition: Bounce,
       })
     }
-
-    await axios.post(`${MESSRATING}/${id}`, formData).then((response) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage["token"]}`
+    };
+    await axios.post(`${MESSRATING}/${id}`, formData, {headers:headers}).then((response) => {
       if (response.data) {
         toast.success("Rating add Successfully", {
           position: "top-center",
