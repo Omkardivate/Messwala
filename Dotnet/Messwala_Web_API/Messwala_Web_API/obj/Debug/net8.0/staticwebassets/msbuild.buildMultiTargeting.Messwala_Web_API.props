@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Messwala_Web_API.props" />
+</Project>

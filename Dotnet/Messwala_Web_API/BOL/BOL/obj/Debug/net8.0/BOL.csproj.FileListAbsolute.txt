@@ -1,0 +1,11 @@
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\bin\Debug\net8.0\BOL.deps.json
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\bin\Debug\net8.0\BOL.dll
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\bin\Debug\net8.0\BOL.pdb
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\BOL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\BOL.AssemblyInfoInputs.cache
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\BOL.AssemblyInfo.cs
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\BOL.csproj.CoreCompileInputs.cache
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\BOL.dll
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\refint\BOL.dll
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\BOL.pdb
+C:\Users\lohar\OneDrive\Desktop\Messwala_Web_API\BOL\BOL\obj\Debug\net8.0\ref\BOL.dll
