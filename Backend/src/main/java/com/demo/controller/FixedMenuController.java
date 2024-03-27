@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.models.FixedMenu;
 
-import com.demo.service.FixedMenuServiceImpl;
+import com.demo.service.FixedMenuService;
 
 @RestController
 @RequestMapping("/fixedmenu")
@@ -18,7 +18,7 @@ import com.demo.service.FixedMenuServiceImpl;
 public class FixedMenuController {
 
 	@Autowired
-	private FixedMenuServiceImpl fs;
+	private FixedMenuService fs;
 	
 	@PostMapping("/")
 	public ResponseEntity<?> addItem(@RequestBody FixedMenu fm){
