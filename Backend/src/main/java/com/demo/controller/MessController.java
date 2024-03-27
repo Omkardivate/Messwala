@@ -22,7 +22,7 @@ import com.demo.service.MessServiceImpl;
 public class MessController {
 
 	@Autowired
-	private MessServiceImpl messService;
+	private MessService messService;
 	
 	@GetMapping("/")
 	public ResponseEntity<?> getAllMess(){
