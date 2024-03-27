@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.models.MessReviews;
-import com.demo.service.MessReviewServiceImpl;
+import com.demo.service.MessReviewService;
 
 @RestController
 @RequestMapping("/reviews")
@@ -21,7 +21,7 @@ import com.demo.service.MessReviewServiceImpl;
 public class MessReviewController {
 	
 	@Autowired
-	private MessReviewServiceImpl mr;
+	private MessReviewService mr;
 	
 	@PostMapping("/{id}")
 	public ResponseEntity<?> addMessReview(@RequestBody MessReviews m,@PathVariable int id){
