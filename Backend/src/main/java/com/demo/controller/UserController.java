@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.demo.models.User;
-import com.demo.service.UserServiceImpl;
+import com.demo.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userService;
 	
 	
 	@PostMapping("/registration")
