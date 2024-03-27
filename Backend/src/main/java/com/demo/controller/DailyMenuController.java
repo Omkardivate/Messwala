@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.models.DailyMenu;
-import com.demo.service.DailyMenuServiceImpl;
+import com.demo.service.DailyMenuService;
 
 @RestController
 @RequestMapping("/dailymenu")
 @CrossOrigin
 public class DailyMenuController {
 	@Autowired
-	private DailyMenuServiceImpl dm;
+	private DailyMenuService dm;
 
 	@PostMapping("/{id}")
 	public ResponseEntity<?> todayMenu(@RequestBody DailyMenu d,@PathVariable int id){
