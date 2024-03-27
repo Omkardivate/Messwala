@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.models.MessRating;
-import com.demo.service.MessRatingServiceImpl;
+import com.demo.service.MessRatingService;
 
 @RestController
 @RequestMapping("/rating")
@@ -19,7 +19,7 @@ import com.demo.service.MessRatingServiceImpl;
 public class MessRatingController {
 
 	@Autowired
-	private MessRatingServiceImpl ms;
+	private MessRatingService ms;
 	
 	
 	@PostMapping("/{id}")
