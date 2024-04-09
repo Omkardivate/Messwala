@@ -18,5 +18,9 @@ public interface MessService {
 	int updateMessPlans(String messPlan,double messPlanPrice,int id);
 	
 	int forgotPassword(String password,String email);
+
+	Mess getMessByEmail(String email);
+
+	List<Object> getParticularMess(int id);
 	
 }

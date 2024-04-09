@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.Exception.UserNotFoundException;
 import com.demo.models.User;
 import com.demo.service.UserService;
 
@@ -33,12 +34,18 @@ public class UserController {
 	 
 	@PostMapping("/login")
 	public ResponseEntity<?> validate(@RequestBody User u){
-		User login=userService.validate(u);
-		System.out.println("check login..."+ login);
-		if(login==null) {
-			 return ResponseEntity.noContent().build();
+		
+		try{
+			User u1=userService.validate(u);
+			if(u1==null)
+				throw new UserNotFoundException("invalid user credentials");
+			return ResponseEntity.ok(u1);
 		}
-		return ResponseEntity.ok(login);
+		catch(UserNotFoundException e){
+			System.out.println( e.getMessage() );
+			return ResponseEntity.noContent().build();
+		}
+
 	}
 	
  	  

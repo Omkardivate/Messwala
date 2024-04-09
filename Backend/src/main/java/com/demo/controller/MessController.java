@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.Exception.MessNotFoundException;
 import com.demo.models.Mess;
-import com.demo.service.MessServiceImpl;
+import com.demo.service.MessService;
 
 @RestController
 @RequestMapping("/mess")
-@CrossOrigin
 public class MessController {
 
 	@Autowired
@@ -44,11 +43,22 @@ public class MessController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> validate(@RequestBody Mess m){
-		Mess m1=messService.validate(m);
-		if(m1==null) {
-			 return ResponseEntity.noContent().build();
+		try {
+			Mess m1=messService.validate(m);
+			if(m1==null) {
+				 throw new MessNotFoundException("invalid mess credentials");
+			}
+			return ResponseEntity.ok(m1);
+			
+		} catch (MessNotFoundException e) {
+			System.out.println( e.getMessage() );
+			return ResponseEntity.noContent().build();
 		}
-		return ResponseEntity.ok(m1);
+		
+		/*
+		 * Mess m1=messService.validate(m); if(m1==null) { return
+		 * ResponseEntity.noContent().build(); } return ResponseEntity.ok(m1);
+		 */
 	}
 	
 	@GetMapping("/{id}")

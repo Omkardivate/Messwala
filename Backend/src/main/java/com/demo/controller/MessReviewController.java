@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,6 @@ import com.demo.service.MessReviewService;
 
 @RestController
 @RequestMapping("/reviews")
-@CrossOrigin
 public class MessReviewController {
 	
 	@Autowired
@@ -26,13 +24,11 @@ public class MessReviewController {
 	@PostMapping("/{id}")
 	public ResponseEntity<?> addMessReview(@RequestBody MessReviews m,@PathVariable int id){
 		
-		
 		MessReviews mr1=mr.addMessReview(m,id);
-		
-		
-		
 		return ResponseEntity.ok(mr1);
 	}
+	
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getReviews(@PathVariable int id){
 		

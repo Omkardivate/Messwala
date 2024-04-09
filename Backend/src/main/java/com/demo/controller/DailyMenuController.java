@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +13,8 @@ import com.demo.service.DailyMenuService;
 
 @RestController
 @RequestMapping("/dailymenu")
-@CrossOrigin
 public class DailyMenuController {
+	
 	@Autowired
 	private DailyMenuService dm;
 
@@ -23,12 +22,11 @@ public class DailyMenuController {
 	public ResponseEntity<?> todayMenu(@RequestBody DailyMenu d,@PathVariable int id){
 		
 		DailyMenu d1=dm.addTodayMenu(d,id);
-		
 		if(d1!=null) {
 			System.out.println(d1);
 			 return ResponseEntity.ok(d1);
 		} 
-		
 		return ResponseEntity.noContent().build();
 	}
+	
 }

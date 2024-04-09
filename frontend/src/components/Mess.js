@@ -94,20 +94,20 @@ const Mess = () => {
               onClick={() => setOpStatus("messplan")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
             >
-              AddMessPlan
+              Add MessPlan
             </button>
 
             <button
               onClick={() => setOpStatus("messcard")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
             >
-              AddMenuCardMenu
+              Add MenuCard Menu
             </button>
             <button
               onClick={() => setOpStatus("dailymenu")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
             >
-              AddDailyMenu
+              Add DailyMenu
             </button>
             
           </div>
@@ -175,6 +175,7 @@ const Mess = () => {
                 id="email"
                 name="email"
                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                readOnly
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -298,6 +299,9 @@ const Mess = () => {
               </button>
             </div>
           </form>
+
+          
+
         </div>
       </div>
     </div>

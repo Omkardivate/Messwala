@@ -10,9 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
 @Entity
 @Table(name="fixedmenu")
 public class FixedMenu {
@@ -25,7 +22,6 @@ public class FixedMenu {
 	private double fixedprice;
 	
 	@ManyToOne
-//	@JsonIgnoreProperties("menus")
 	@JoinColumn(name="messId")
 	private Mess mess;
 
@@ -78,9 +74,5 @@ public class FixedMenu {
 		return "FixedMenu [itemId=" + itemId + ", fixedmenuName=" + fixedmenuName + ", fixedprice=" + fixedprice
 				+ ", mess=" + mess + "]";
 	}
-
-
- 
-
 	
 }

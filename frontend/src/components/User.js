@@ -35,14 +35,11 @@ const User = ({ userId }) => {
     e.preventDefault()
     const body = {
       userName,
-
       email,
-
       mobile,
-
       password,
-      
     }
+    
     await axios.put(`${USER}/${sessionStorage["userId"]}`, body, {headers:headers})
       .then((response) => {
         if (response.data) {
@@ -96,6 +93,7 @@ const User = ({ userId }) => {
                 Email
               </label>
               <input
+                readOnly
                 type="email"
                 id="email"
                 name="email"

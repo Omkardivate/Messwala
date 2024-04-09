@@ -36,7 +36,7 @@ const SingleMess = () => {
     })
   }
   return (
-    <div className=" w-full flex justify-around items-center">
+    <div className=" w-full flex justify-around items-center ">
       <div className="space-y-8 flex flex-col items-center justify-center">
         <div className="flex space-x-5">
           <button
@@ -63,25 +63,25 @@ const SingleMess = () => {
         </>
       </div>
 
-      <div className=" h-1/2 w-1/2 flex flex-col items-center space-y-8">
+      <div className=" h-1/2 w-1/2 flex flex-col items-center space-y-8 mb-20">
         <div className="flex space-x-5">
           <button
             onClick={() => setString("details")}
             className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
           >
-            MessDetails
+            Mess Details
           </button>
           <button
             onClick={() => setString("menucard")}
             className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
           >
-            MenuCard
+            Menu Card
           </button>
           <button
             onClick={() => setString("reviews")}
             className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
           >
-            MessReviews
+            Mess Reviews
           </button>
         </div>
         <>

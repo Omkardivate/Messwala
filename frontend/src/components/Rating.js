@@ -5,9 +5,10 @@ import { Bounce, toast } from "react-toastify"
 import { MESSRATING } from "../utils/constants"
 const Rating = () => {
   const { id } = useParams()
+
   const [formData, setFormData] = useState({
     messId: { messId: id },
-    rating: 0,
+    rating: 0
   })
 
   const handleChange = (e) => {
@@ -38,6 +39,7 @@ const Rating = () => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${sessionStorage["token"]}`
     };
+    console.log("check-"+headers)
     await axios.post(`${MESSRATING}/${id}`, formData, {headers:headers}).then((response) => {
       if (response.data) {
         toast.success("Rating add Successfully", {
@@ -72,6 +74,7 @@ const Rating = () => {
             name="rating"
             pattern="^[1-5]$"
             placeholder="1-5 rating only"
+            title="1-5 rating only"
             value={formData.rating}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -85,7 +88,7 @@ const Rating = () => {
               type="submit"
               className="bg-blue-500  text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
             >
-              GiveRating
+              Give Rating
             </button>
           ) : (
             <button
@@ -93,7 +96,7 @@ const Rating = () => {
               className="bg-gray-500  text-white px-6 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
               disabled
             >
-              GiveRating
+              Give Rating
             </button>
           )}
         </div>

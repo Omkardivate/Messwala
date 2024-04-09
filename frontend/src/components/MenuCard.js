@@ -2,7 +2,6 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { GETSINGLEMESS } from "../utils/constants"
-import Mess from "./Mess"
 
 const MenuCard = () => {
   const [menu, setMenu] = useState([])

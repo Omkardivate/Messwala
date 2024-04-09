@@ -59,7 +59,7 @@ const Review = () => {
               id="reviews"
               name="reviews"
               pattern="^[A-Za-z\s]+$"
-              placeholder="Good REviews only"
+              placeholder="Good reviews only"
               value={formData.reviews}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -73,7 +73,7 @@ const Review = () => {
                 type="submit"
                 className="bg-blue-500  text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
               >
-                GiveReview
+                Give Review
               </button>
             ) : (
               <button
@@ -81,7 +81,7 @@ const Review = () => {
                 className="bg-gray-500  text-white px-6 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
                 disabled
               >
-                GiveReview
+                Give Review
               </button>
             )}
           </div>

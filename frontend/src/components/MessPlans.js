@@ -102,7 +102,7 @@ const MessPlans = () => {
               type="submit"
               className="bg-blue-500  text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
             >
-              AddMessPlan
+              Add MessPlan
             </button>
           </div>
         </form>

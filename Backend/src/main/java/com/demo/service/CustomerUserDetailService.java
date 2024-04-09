@@ -28,10 +28,10 @@ public class CustomerUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	System.out.println("from custom- "+username);
+//    	System.out.println("from custom- "+username);
     	
         User user = userDao.getByEmail(username);
-        System.out.println("from DB: "+ user);
+//        System.out.println("from DB: "+ user);
         
         if (user == null) {
             Mess mess = messDao.getByEmail(username);
@@ -41,7 +41,7 @@ public class CustomerUserDetailService implements UserDetailsService {
             } 
             return new org.springframework.security.core.userdetails.User(mess.getEmail(), mess.getPassword(), getAuthorities(mess));
         } 
-        System.out.println("user= "+ user);
+//        System.out.println("user= "+ user);
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 getAuthorities(user));
     }
@@ -64,5 +64,4 @@ public class CustomerUserDetailService implements UserDetailsService {
         return authorities;
     }
 }
-// mess eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrdW5hbEBnbWFpbC5jb20iLCJleHAiOjE3MTA2NzIwODIsImlhdCI6MTcxMDY2NjY4Mn0.d2UXWPNQIr0HzZBWK1h-kEkIBPPPGt0nbmL9AoX1uf8nyTYNKSEfgZmfpJnGmGTdvLxL3T4JnJEFn6OpwTL15w
-//   $2a$10$eE7bKzgAXRT1794y.P4Afui3GMCgxTk7RtjfjcgaxGvk3aT0hl/0G
+

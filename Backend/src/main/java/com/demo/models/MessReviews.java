@@ -10,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="messreviews")
-
 public class MessReviews {
 
 	
@@ -63,8 +62,5 @@ public class MessReviews {
 	public String toString() {
 		return "MessReviews [messReviewId=" + messReviewId + ", reviews=" + reviews + ", messId=" + messId + "]";
 	}
-	
-	
-	
 	
 }

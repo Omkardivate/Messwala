@@ -10,8 +10,8 @@ import com.demo.models.DailyMenu;
 public class DailyMenuServiceImpl implements DailyMenuService {
 
 	@Autowired
-
 	private DailyMenuDao dd;
+	
 	public DailyMenu addTodayMenu(DailyMenu dm,int id) {
 		
 		DailyMenu dm1=dd.getDailyMenuById(id);
@@ -20,10 +20,7 @@ public class DailyMenuServiceImpl implements DailyMenuService {
 			return dm;
 		}
 		
-	  return	dd.save(dm);
+	  return dd.save(dm);
 	}
-	
-	
-	
 
 }

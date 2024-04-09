@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <div className="sticky z-[100] w-full bg-secondary h-20 flex justify-between items-center p-5">
       <Link to="/">
-        <h2 className=" text-[32px] font-semibold cursor-pointer text-rear">
+        <h2 className=" text-[32px] font-semibold cursor-pointer text-rear" style={{fontFamily: ' cursive'}}>
           MessWala
         </h2>
       </Link>

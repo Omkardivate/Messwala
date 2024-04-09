@@ -1,10 +1,7 @@
 package com.demo.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,11 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -26,13 +19,15 @@ public class Mess {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int messId;
+	
 	@Column(unique=true)
 	private String email;
+	
 	private String messName;
 	private String userName;
 	private String password;
 	private String mobile;
-	private float rating;
+	private float rating;  //no need
 	private String messTime;
 	private String state;
 	private String city;
@@ -41,6 +36,7 @@ public class Mess {
 	private double messPlanPrice;
 	private String choice;
 	private String status;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
 	

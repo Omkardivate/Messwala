@@ -11,10 +11,11 @@ public class FixedMenuServiceImpl implements FixedMenuService {
 
 	@Autowired
 	private FixedMenuDao fd;
+	
+	
 	@Override
 	public FixedMenu addItem(FixedMenu fm) {
 		
 		return fd.save(fm);
 	}
-
 }

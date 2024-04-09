@@ -17,6 +17,7 @@ const Register = () => {
   const [city, setCity] = useState("")
   const [landmark, setLandMark] = useState("")
   const [choice, setChoice] = useState("user")
+  const status= "open"
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -65,7 +66,8 @@ const Register = () => {
         state,
         city,
         landmark,
-        choice
+        choice,
+        status
       }
       axios.post(`${MESS}/registration`, body).then((response) => {
         const resData = response.data
@@ -113,7 +115,7 @@ const Register = () => {
               pattern="^[A-Za-z\s]+$"
               title="Only letters are allowed"
               
-              placeholder="eg.Karan Bhagvant"
+              placeholder="Omkar Divate"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -128,7 +130,7 @@ const Register = () => {
               type="email"
               id="email"
               name="email"
-              placeholder="eg.karanbhagvant@gmail.com"
+              placeholder="omkar@gmail.com"
               value={email}
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               onChange={(e) => setEmail(e.target.value)}
@@ -144,7 +146,7 @@ const Register = () => {
               type="password"
               id="password"
               name="password"
-              placeholder="eg.Karan@123"
+              placeholder="eg.Omkar@123"
               title="Password must contain atleast one capital letter,small letter,number and special symbol"
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               value={password}
@@ -205,11 +207,7 @@ const Register = () => {
                   required
                 />
               </div>
-            </>
-          ) : (
-            " "
-          )}
-          <div className="mb-4">
+              <div className="mb-4">
             <label htmlFor="city" className="block font-semibold mb-1">
               City
             </label>
@@ -257,6 +255,11 @@ const Register = () => {
               required
             />
           </div>
+            </>
+          ) : (
+            " "
+          )}
+          
           <div className="mb-4">
             <label htmlFor="mobile" className="block font-semibold mb-1">
               Mobile

@@ -11,7 +11,6 @@ import com.demo.models.MessReviews;
 @Repository
 public interface MessReviewDao extends JpaRepository<MessReviews, Integer> {
 
-	
 	@Query(value="select * from messreviews where mess_id=:id",nativeQuery=true)
 	List<MessReviews> getReviews(int id);
 	

@@ -14,11 +14,12 @@ public class MessReviewServiceImpl implements MessReviewService {
 
 	@Autowired
 	private MessReviewDao md;
+	
 	@Override
 	public MessReviews addMessReview(MessReviews m, int id) {
-		
 		return md.save(m);
 	}
+	
 	@Override
 	public List<MessReviews> getReviews(int id) {
 		return md.getReviews(id);

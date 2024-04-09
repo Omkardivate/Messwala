@@ -138,6 +138,7 @@ const Login = () => {
               id="email"
               name="username"
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              placeholder="aditya@gmail.com"
               value={formData.username}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -153,6 +154,7 @@ const Login = () => {
               id="password"
               name="password"
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              placeholder="Aditya@123"
               value={formData.password}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"

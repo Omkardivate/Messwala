@@ -8,9 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name="DailyMenu")
 public class DailyMenu {
@@ -18,13 +15,13 @@ public class DailyMenu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int dailymenuId;
+	
 	private String dailymenuName;
 	private String availbility;
 	private double dailyprice;
 	
 	@OneToOne
 	@JoinColumn(name="messId")
-	
 	private Mess messId;
 
 	public DailyMenu() {
@@ -86,17 +83,5 @@ public class DailyMenu {
 				+ availbility + ", dailyprice=" + dailyprice + ", messId=" + messId + "]";
 	}
 
-	
 
-
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
 }

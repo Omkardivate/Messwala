@@ -3,7 +3,6 @@ package com.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.demo.dao.MessDao;
 import com.demo.models.Mess;
@@ -14,32 +13,21 @@ public class MessServiceImpl implements MessService {
 	@Autowired
 	private MessDao messDao;
 	
-//	@Autowired
-//    private PasswordEncoder passwordEncoder;
-	
 	@Override
 	public Mess addMess(Mess m) {
-		
 		Mess m1=messDao.getByEmail(m.getEmail());
 		if(m1==null) {
-//			String encodedPassword = passwordEncoder.encode(m.getPassword());
-//			m.setPassword(encodedPassword);
-			messDao.save(m);
-			return m;
+			return messDao.save(m);
 		}
 		return null;
 	}
 
 	@Override
 	public Mess validate(Mess m) {
-		Mess existingMess = messDao.getByEmail(m.getEmail());
-//        if (existingMess != null && passwordEncoder.matches(m.getPassword(), existingMess.getPassword())) {
-//            return existingMess;
-//        }
-//        return null;
-        return existingMess;
+		return messDao.getMess(m.getEmail(),m.getPassword());
 	}
      
+	@Override
 	public Mess getMessByEmail(String email) {
 		return messDao.getByEmail(email);
 	}
@@ -60,8 +48,6 @@ public class MessServiceImpl implements MessService {
 		
 		Mess mess=messDao.getMessById(id);
 		if(mess!=null) {
-//			String encodedPassword = passwordEncoder.encode(m.getPassword());
-//			mess.setPassword(encodedPassword);
 		    mess.setCity(m.getCity());
 		    mess.setEmail(m.getEmail());
 		    mess.setLandmark(m.getLandmark());
@@ -79,6 +65,7 @@ public class MessServiceImpl implements MessService {
 		return null;
 	}
 
+	@Override
 	public List<Object> getParticularMess(int id) {
 		return messDao.getOneMess(id);
 	}
@@ -87,16 +74,13 @@ public class MessServiceImpl implements MessService {
 	public int updateMessPlans(String messPlan,double messPlanPrice ,int id) {
 		 Mess m1=messDao.getMessById(id);
 		 if(m1!=null) {
-	      messDao.updateMessPlans(messPlan,messPlanPrice,id);
-	      return 1;
+			 return messDao.updateMessPlans(messPlan,messPlanPrice,id);
 		 }
 		return 0;
 	}
 
 	@Override
 	public int forgotPassword(String password, String email) {
-//		String encodedPassword = passwordEncoder.encode(password);
-//		return messDao.forgotPassword(encodedPassword,email);
 		return messDao.forgotPassword(password,email);
 	}
 }

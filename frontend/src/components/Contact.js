@@ -66,7 +66,7 @@ const Contact = () => {
               id="name"
               name="user_name"
               pattern="^[A-Za-z\s]+$"
-              placeholder="eg.Mayur Patil"
+              placeholder="Sakharam Deshpande"
               value={formData.user_name}
               onChange={handleChange}
               className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
@@ -81,7 +81,7 @@ const Contact = () => {
               type="email"
               id="email"
               name="user_email"
-              placeholder="eg.mayur538@gmail.com"
+              placeholder="sakharam@gmail.com"
               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
               value={formData.user_email}
               onChange={handleChange}
