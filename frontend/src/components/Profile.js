@@ -17,12 +17,12 @@ const Profile = () => {
     if (sessionStorage["choice"] == "user") {
       await axios.get(`${USER}/${sessionStorage["userId"]}`, {headers:headers})
         .then((response) => {
-          console.log(response.data)
+          // console.log(response.data)
         })
     } else {
       await axios.get(`${MESS}/${sessionStorage["messId"]}`, {headers:headers} )
         .then((response) => {
-          console.log(response.data)
+          // console.log(response.data)
         })
     }
   }

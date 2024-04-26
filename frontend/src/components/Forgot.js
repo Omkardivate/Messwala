@@ -63,7 +63,7 @@ const Forgot = () => {
         }
       })
     } else {
-      await axios.put(`${MESS}/forgot/`, formData, {headers:headers}).then((response) => {
+      await axios.put(`${MESS}/forgot`, formData, {headers:headers}).then((response) => {
         const data = response.data
         console.log(data)
         const { messId, userName } = data

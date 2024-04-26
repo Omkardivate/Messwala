@@ -7,9 +7,9 @@ import DailyMenu from "./DailyMenu"
 import FixedMenu from "./FixedMenu"
 import MessPlans from "./MessPlans"
 import Status from "./Status"
+import MenuCard from "./MenuCard"
 
 const Mess = () => {
-  const param = useParams()
   const [userName, setUserName] = useState("")
   const [messName, setMessName] = useState("")
   const [email, setEmail] = useState("")
@@ -18,11 +18,12 @@ const Mess = () => {
   const [messTime, setMessTime] = useState("")
   const [mobile, setMobile] = useState("")
   const [state, setState] = useState("")
-  const [password, setPassword] = useState("")
-
-  const [opstatus, setOpStatus] = useState("dailymenu")
+  // const [password, setPassword] = useState("")
   const [choice,setChoice]= useState("")
   const [status,setStatus]= useState("")
+
+  const [opstatus, setOpStatus] = useState("dailymenu")
+  
 
   useEffect(() => {
     fetchMess()
@@ -44,7 +45,7 @@ const Mess = () => {
       setMessTime(data.messTime)
       setMobile(data.mobile)
       setState(data.state)
-      setPassword(data.password)
+      // setPassword(data.password)
       setChoice(data.choice)
       setStatus(data.status)
     })
@@ -64,7 +65,7 @@ const Mess = () => {
       messTime,
       mobile,
       state,
-      password,
+      // password,
       choice,
       status
     }
@@ -88,8 +89,8 @@ const Mess = () => {
   return (
     <div className="bg-gray-200 h-full w-full flex  justify-around">
       <div className="flex flex-col">
-        <div className=" flex flex-col items-center space-y-[100px] mt-[200px]">
-          <div className="flex space-x-5">
+        <div className=" flex flex-col items-center space-y-[100px] mt-[70px]">
+          <div className="flex space-x-5 w-full">
             <button
               onClick={() => setOpStatus("messplan")}
               className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
@@ -109,6 +110,12 @@ const Mess = () => {
             >
               Add DailyMenu
             </button>
+            <button
+              onClick={() => setOpStatus("menucard")}
+              className="bg-secondary text-primary px-6 py-4 rounded-md font-semibold hover:bg-rear hover:delay-150"
+            >
+              Menucard
+            </button>
             
           </div>
           <div>
@@ -118,13 +125,18 @@ const Mess = () => {
               <FixedMenu />
             ) : opstatus == "messplan" ? (
               <MessPlans />
-            ) : (
+            ) : opstatus == "menucard" ? (
+              <MenuCard/>
+            ) :(
               <DailyMenu />
             )}
           </div>
         </div>
       </div>
-      <div className="bg-yellow-200 w-2/5 mt-5 mb-5">
+
+
+
+      <div className="bg-white-200 w-2/5 mt-5 mb-5">
         <div className=" p-5 bg-white rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">
             👤{userName}👤
@@ -138,7 +150,7 @@ const Mess = () => {
                 <label className="block font-semibold mb-1">
                   Status:
                 </label>
-                {console.log(status)}
+                
                 { status === "open" ? (
                   <>
                     <input type="radio" name="status" id="open" defaultChecked onClick={(e) => setStatus(e.target.id)}/> <label htmlFor="open">Open</label>
@@ -182,7 +194,7 @@ const Mess = () => {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="password" className="block font-semibold mb-1">
                 Password
               </label>
@@ -196,7 +208,7 @@ const Mess = () => {
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
                 required
               />
-            </div>
+              </div>  */}
 
             <div className="mb-4">
               <label htmlFor="messName" className="block font-semibold mb-1">
@@ -299,8 +311,6 @@ const Mess = () => {
               </button>
             </div>
           </form>
-
-          
 
         </div>
       </div>

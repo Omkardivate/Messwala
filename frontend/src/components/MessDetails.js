@@ -63,7 +63,7 @@ const MessDetails = () => {
           {/*    choice i.e. 'mess'
           <h2 className="text-xl font-semibold mb-2">{messData[14]}</h2> */}
     
-          <h3 className="text-[20px] mb-2">Rating : {data.rating}</h3>
+          <h3 className="text-[20px] mb-2">Rating : {data.rating ? (data.rating):(0)}</h3>
     
           {/* mobile
           <h3 className="text-[20px] mb-2">{messData[9]}</h3> */}

@@ -15,7 +15,7 @@ const Footer = () => {
           />
         </a>
         <a
-          href="https://www.linkedin.com/in/kunal-hole-3a9459189/"
+          href="https://www.linkedin.com/in/omkar-divate-b80b0a21b/"
           target="_blank"
         >
           <img

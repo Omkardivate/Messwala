@@ -37,7 +37,7 @@ const User = ({ userId }) => {
       userName,
       email,
       mobile,
-      password,
+      // password,
     }
     
     await axios.put(`${USER}/${sessionStorage["userId"]}`, body, {headers:headers})
@@ -104,12 +104,12 @@ const User = ({ userId }) => {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/*<div className="mb-4">
               <label
                 htmlFor="password"
                 className="block font-semibold mb-1 text-secondary"
               >
-                Password
+              Password
               </label>
               <input
                 type="password"
@@ -120,8 +120,8 @@ const User = ({ userId }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-rear"
                 required
-              />
-            </div>
+              />  
+            </div>  */}
 
             <div className="mb-4">
               <label
@@ -139,8 +139,8 @@ const User = ({ userId }) => {
                 onChange={(e) => setMobile(e.target.value)}
                 className="w-full px-4 py-2 rounded-md border focus:outline-none focus:border-blue-500"
                 required
-              />
-            </div>
+              />  
+              </div> 
 
             <div className="text-center">
               <button

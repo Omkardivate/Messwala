@@ -1,6 +1,6 @@
 const MessCard = ({ messData }) => {
 
-  console.log(messData)
+  // console.log(messData)
   return (
     <>
     {

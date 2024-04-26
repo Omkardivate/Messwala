@@ -15,10 +15,19 @@ const MenuCard = () => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${sessionStorage["token"]}`
     };
-    await axios.get(`${GETSINGLEMESS}/${id}`,{headers:headers}).then((response) => {
-      console.log(response?.data)
-      setMenu(response.data)
-    })
+    
+    if(id!=null){
+      await axios.get(`${GETSINGLEMESS}/${id}`,{headers:headers}).then((response) => {
+        console.log(response.data)
+        setMenu(response.data)
+      })
+    }
+    else{
+      console.log(sessionStorage["messId"])
+      await axios.get(`${GETSINGLEMESS}/${sessionStorage["messId"]}`,{headers:headers}).then((response) => {
+        setMenu(response.data)
+      })
+    }
   }
   return (
     // <h1>MessCard</h1>
@@ -57,9 +66,8 @@ const MenuCard = () => {
                               </>
                             }
                           </div>
-                        ) : (
-                          ""
-                        )}
+                        ) : ("" )
+                        }
                       </td>
                     </tr>
                   </tbody>

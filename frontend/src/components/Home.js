@@ -16,7 +16,7 @@ const Home = () => {
   const fetchMess = async () => {
     const data = await fetch(`${MESS}/`)
     const json = await data.json()
-    console.log(json)
+    // console.log(json)
     setMess(json)
     setFilterMess(json)
   }

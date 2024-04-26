@@ -57,6 +57,7 @@ const FixedMenu = () => {
           progress: undefined,
           theme: "colored",
           transition: Bounce,
+
         })
       }
     })
